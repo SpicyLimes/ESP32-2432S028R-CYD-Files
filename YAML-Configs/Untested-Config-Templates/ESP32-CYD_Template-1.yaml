@@ -1,0 +1,518 @@
+# Basic yaml code to get the ESP32-2432S028 working in Home Assistant as a 12-button "Stream Deck"
+# ============================================================
+# Author: Aaron Stewart @makeitworktech, with the help of ChatGPT.
+# GitHub: https://github.com/makeitworktech
+#
+# ============================================================
+# NOTE:
+# In order for this to work you need to add the following settings in your secrets.yaml file:
+# - api_key
+# - ota_password
+# - wifi_ssid
+# - wifi_password
+# - ap_password
+#
+# Create a folder named fonts in your ESPHome folder, and copy the
+# files fonts/Arimo-Regular.ttf and fonts/materialdesignicons-webfont.ttf there.
+#
+# ============================================================
+# General ESPHome Setup
+# ============================================================
+# Change the naming below, they will be the names used in Home Assistant
+# ESPHome naming
+esphome:
+  name: office-cyd
+  friendly_name: Office CYD
+
+# The ESP32-2432S028 uses a standard ESP32-WROVER, so we use esp32dev
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+  cpu_frequency: 240MHz  # Ensure maximum CPU frequency
+
+# Enable logging
+logger:
+  level: INFO
+
+
+# Set OTA password, enables updates via ESPHome
+ota:
+  platform: esphome
+  password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: none  # Disable power saving for faster response
+  fast_connect: true     # Speed up reconnections
+  
+  ap:  # Simplified fallback AP config
+    ssid: "Office-CYD-Fallback"
+    password: !secret ap_password
+
+api:
+  encryption:
+    key: !secret api_key
+  reboot_timeout: 0s  # Prevent unnecessary reboots
+
+# Allows captive portal access when in fallback mode
+captive_portal:
+
+# ============================================================
+# ESPHome Display related setup
+# ============================================================
+# Create a font to use, add and remove glyphs as needed.
+font:
+  - file:
+      path: Arimo-Regular.ttf
+      type: local
+    id: arimo48
+    size: 29
+    glyphs: " .,°0123456789CFna-%"  
+  - file:
+      path: Arimo-Regular.ttf
+      type: local
+    id: arimo14
+    size: 14    # Back to original size for units
+    glyphs: " 0123456789°.%ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  - file:
+      path: Arimo-Regular.ttf
+      type: local
+    id: arimo13    # New size for text (1px smaller than original)
+    size: 13
+    glyphs: " 0123456789°.%ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  - file: materialdesignicons-webfont.ttf
+    id: mdi_icons
+    size: 48    # Original size for main button icons
+    glyphs:
+      - 󱨮  # mdi-blinds-vertical-closed
+      - 󰦠  # mdi-shower
+      - 󱞘  # mdi-ceiling-fan-light
+      - 󰛨  # mdi-lightbulb-on
+      - 󰘚  # mdi-chip
+      - 󰍛  # mdi-memory
+      - 󰆓  # mdi-content-save
+  - file: materialdesignicons-webfont.ttf
+    id: mdi_icons_small
+    size: 14    # Size for thermometer icon
+    glyphs:
+      - 󰔏  # mdi-thermometer
+      - 󰘚  # mdi-chip
+      - 󰍛  # mdi-memory
+      - 󰆓  # mdi-content-save
+
+# Defines the colors we want to use later for the different buttons.
+color:
+  - id: bright_blue
+    red: 100%
+    green: 50%
+    blue: 0%
+  - id: teal
+    red: 100%
+    green: 100%
+    blue: 0%
+  - id: green
+    red: 0%
+    green: 100%
+    blue: 0%
+  - id: black
+    red: 0%
+    green: 0%
+    blue: 0%
+  - id: dark_blue
+    red: 20%
+    green: 0%
+    blue: 0%
+  - id: white
+    red: 100%
+    green: 100%
+    blue: 100%
+  - id: yellow
+    red: 0%
+    green: 100%
+    blue: 100%
+  - id: red
+    red: 0%
+    green: 0%
+    blue: 100%
+  - id: light_blue
+    red: 90%
+    green: 85%
+    blue: 68%
+  - id: blue
+    red: 100%
+    green: 0%
+    blue: 0%
+
+# ============================================================
+# Home Assistant related setup
+# ============================================================
+
+# Setting the single channel backlight as a light entity in Home Assistant
+light:
+  - platform: monochromatic
+    output: backlight_pwm
+    name: Display Backlight
+    id: backlight
+    restore_mode: ALWAYS_ON
+
+# Add temperature sensors from Home Assistant
+sensor:
+  - platform: homeassistant
+    id: haos_temperature
+    entity_id: sensor.system_monitor_processor_temperature
+    unit_of_measurement: "°C"
+  - platform: homeassistant
+    id: cpu_usage
+    entity_id: sensor.system_monitor_processor_use
+    unit_of_measurement: "%"
+  - platform: homeassistant
+    id: ram_usage
+    entity_id: sensor.system_monitor_memory_usage
+    unit_of_measurement: "%"
+  - platform: homeassistant
+    id: disk_free
+    entity_id: sensor.system_monitor_disk_free
+    unit_of_measurement: "GB"
+  - platform: homeassistant
+    id: office_temperature
+    entity_id: sensor.office_multi_sensor_temperature
+    internal: true
+  - platform: homeassistant
+    id: bedroom_temperature
+    entity_id: sensor.nest_temperature_sensor_master_bedroom_temperature
+    internal: true
+  - platform: homeassistant
+    id: bathroom_temperature
+    entity_id: sensor.bathroom_t_h_sensor_temperature
+    internal: true
+  - platform: homeassistant
+    id: atelier_temperature
+    entity_id: sensor.atelier_multi_sensor_temperature
+    internal: true
+
+# ============================================================
+# Touchscreen Button Configuration
+# ============================================================
+# Define 12 touch zones. The on_press actions for the bottom row have been removed.
+binary_sensor:
+  # Full screen touch sensor for wake
+  - platform: touchscreen
+    name: "Screen Wake Touch"
+    id: screen_wake_touch
+    x_min: 0
+    x_max: 320
+    y_min: 0
+    y_max: 240
+    on_press:
+      then:
+        - light.turn_on: backlight
+  # Top row buttons (1-4)
+  - platform: touchscreen
+    name: Button 1
+    x_min: 10
+    x_max: 75
+    y_min: 10
+    y_max: 75
+  - platform: touchscreen
+    name: Button 2
+    x_min: 85
+    x_max: 150
+    y_min: 10
+    y_max: 75
+  - platform: touchscreen
+    name: Button 3
+    x_min: 160
+    x_max: 225
+    y_min: 10
+    y_max: 75
+  - platform: touchscreen
+    name: Button 4
+    x_min: 235
+    x_max: 300
+    y_min: 10
+    y_max: 75
+  # Middle row buttons (5-8)
+  - platform: touchscreen
+    name: Button 5
+    x_min: 10
+    x_max: 75
+    y_min: 85
+    y_max: 150
+  - platform: touchscreen
+    name: Button 6
+    x_min: 85
+    x_max: 150
+    y_min: 85
+    y_max: 150
+  - platform: touchscreen
+    name: Button 7
+    x_min: 160
+    x_max: 225
+    y_min: 85
+    y_max: 150
+  - platform: touchscreen
+    name: Button 8
+    x_min: 235
+    x_max: 300
+    y_min: 85
+    y_max: 150
+  # Bottom row buttons (9-12)
+  - platform: touchscreen
+    name: Button 9
+    x_min: 10
+    x_max: 75
+    y_min: 160
+    y_max: 225
+  - platform: touchscreen
+    name: Button 10
+    x_min: 85
+    x_max: 150
+    y_min: 160
+    y_max: 225
+  - platform: touchscreen
+    name: Button 11
+    x_min: 160
+    x_max: 225
+    y_min: 160
+    y_max: 225
+  - platform: touchscreen
+    name: Button 12
+    x_min: 235
+    x_max: 300
+    y_min: 160
+    y_max: 225
+
+# ============================================================
+# Touchscreen Display related setup
+# ============================================================
+
+# SPI bus for TFT display and touch controller
+spi:
+  - id: tft
+    clk_pin: GPIO14
+    mosi_pin: GPIO13
+    miso_pin: GPIO12
+  - id: touch
+    clk_pin: GPIO25
+    mosi_pin: GPIO32
+    miso_pin: GPIO39
+
+# Set a pin to control the backlight
+output:
+  - platform: ledc
+    pin: GPIO21
+    id: backlight_pwm
+
+# Defining the touchscreen for later use
+touchscreen:
+  platform: xpt2046
+  spi_id: touch
+  cs_pin: GPIO33
+  interrupt_pin: GPIO36
+  update_interval: 100ms  # Increased from 50ms to reduce CPU load
+  threshold: 400
+  calibration:
+    x_min: 180
+    x_max: 3800
+    y_min: 240
+    y_max: 3860
+  transform:
+    swap_xy: true
+
+# ============================================================
+# Display Configuration
+# ============================================================
+display:
+  - platform: ili9xxx
+    id: my_display
+    color_palette: 8BIT
+    model: ili9341
+    spi_id: tft
+    cs_pin: GPIO15
+    dc_pin: GPIO2
+    invert_colors: false
+    data_rate: 40MHz
+    update_interval: 2s
+    dimensions:
+      width: 320
+      height: 240
+    lambda: |-
+      it.fill(Color::BLACK);  // Clear screen background
+
+      // Define icons for all 12 buttons
+      const char *icons[12] = {
+        "", // Button 1 will be handled separately
+        "", // Button 2 will be handled separately
+        "", // Button 3 will be handled separately
+        "", // Button 4 will be handled separately
+        "", // Button 5 will be handled separately
+        "", // Button 6 will be handled separately
+        "", // Button 7 will be handled separately
+        "", // Button 8 will be handled separately
+        "󱨮", // mdi-blinds-vertical-closed
+        "󰦠", // mdi-shower (bottom row leftmost)
+        "󱞘", // mdi-ceiling-fan-light (bottom row second from right)
+        "󰛨"  // mdi-lightbulb-on (bottom row rightmost)
+      };
+
+      for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 4; col++) {
+          int btn = row * 4 + col;
+          int x = 10 + col * 75;
+          int y = 10 + row * 75;
+
+          // Only draw button backgrounds for bottom row (row 2)
+          if (row == 2) {
+            // Shadow (slightly offset dark rectangle)
+            it.filled_rectangle(x + 2, y + 2, 65, 65, Color(0x20, 0x20, 0x20));
+            // Dark blue button background
+            it.filled_rectangle(x, y, 65, 65, id(dark_blue));
+          }
+
+          // Special handling for Button 1 (HAOS temperature)
+          if (btn == 0) {
+            Color tempColor = id(white);
+            if (id(haos_temperature).state >= 65) {
+              tempColor = id(red);
+            } else if (id(haos_temperature).state >= 50) {
+              tempColor = id(yellow);
+            }
+            it.printf(x + 2, y + 8, id(arimo13), tempColor, TextAlign::LEFT, "HAOS");
+            it.print(x + 69, y + 6, id(mdi_icons_small), tempColor, TextAlign::RIGHT, "󰔏");
+            it.printf(x + 32, y + 32, id(arimo48), tempColor, TextAlign::CENTER, "%.1f", id(haos_temperature).state);
+            it.printf(x + 32, y + 55, id(arimo14), tempColor, TextAlign::CENTER, "%s", "°C");
+          }
+          else if (btn == 1) {  // Button 2 - CPU
+            Color btnColor = id(bright_blue);  // Default color
+            if (id(cpu_usage).state >= 50) {
+              btnColor = id(red);
+            } else if (id(cpu_usage).state >= 10 && id(cpu_usage).state <= 49.9) {
+              btnColor = id(yellow);
+            }
+            it.printf(x + 2, y + 8, id(arimo13), btnColor, TextAlign::LEFT, "CPU");
+            it.print(x + 69, y + 6, id(mdi_icons_small), btnColor, TextAlign::RIGHT, "󰘚");
+            it.printf(x + 32, y + 32, id(arimo48), btnColor, TextAlign::CENTER, "%.1f", id(cpu_usage).state);
+            it.printf(x + 32, y + 55, id(arimo14), btnColor, TextAlign::CENTER, "%s", "%");
+          }
+          else if (btn == 2) {  // Button 3 - RAM
+            Color btnColor = id(teal);  // Default color
+            if (id(ram_usage).state >= 60) {
+              btnColor = id(red);
+            } else if (id(ram_usage).state >= 20 && id(ram_usage).state <= 59.9) {
+              btnColor = id(yellow);
+            }
+            it.printf(x + 2, y + 8, id(arimo13), btnColor, TextAlign::LEFT, "RAM");
+            it.print(x + 65, y + 6, id(mdi_icons_small), btnColor, TextAlign::RIGHT, "󰍛");
+            it.printf(x + 32, y + 32, id(arimo48), btnColor, TextAlign::CENTER, "%.1f", id(ram_usage).state);
+            it.printf(x + 32, y + 55, id(arimo14), btnColor, TextAlign::CENTER, "%s", "%");
+          }
+          else if (btn == 3) {  // Button 4 - SSD
+            Color btnColor = id(green);  // Default color
+            if (id(disk_free).state < 49.9) {
+              btnColor = id(red);
+            } else if (id(disk_free).state >= 50 && id(disk_free).state <= 250) {
+              btnColor = id(yellow);
+            }
+            it.printf(x - 5, y + 8, id(arimo13), btnColor, TextAlign::LEFT, "SSD Free");
+            it.print(x + 69, y + 6, id(mdi_icons_small), btnColor, TextAlign::RIGHT, "󰆓");
+            it.printf(x + 32, y + 32, id(arimo48), btnColor, TextAlign::CENTER, "%.1f", id(disk_free).state);
+            it.printf(x + 32, y + 55, id(arimo14), btnColor, TextAlign::CENTER, "%s", "GB");
+          }
+          // Special handling for Button 5 (office temperature)
+          else if (btn == 4) {  // Button 5
+            Color tempColor = id(white);
+            if (id(office_temperature).state > 29) {
+              tempColor = id(red);
+            } else if (id(office_temperature).state >= 26 && id(office_temperature).state <= 28.9) {
+              tempColor = id(yellow);
+            } else if (id(office_temperature).state >= 10 && id(office_temperature).state <= 19) {
+              tempColor = id(light_blue);
+            } else if (id(office_temperature).state < 9.9) {
+              tempColor = id(blue);
+            }
+            it.printf(x + 2, y + 8, id(arimo13), tempColor, TextAlign::LEFT, "Office");
+            it.print(x + 69, y + 6, id(mdi_icons_small), tempColor, TextAlign::RIGHT, "󰔏");
+            it.printf(x + 32, y + 32, id(arimo48), tempColor, TextAlign::CENTER, "%.1f", id(office_temperature).state);
+            it.printf(x + 32, y + 55, id(arimo14), tempColor, TextAlign::CENTER, "%s", "°C");
+          }
+          // Special handling for Button 6 (master bedroom temperature)
+          else if (btn == 5) {  // Button 6
+            Color tempColor = id(white);
+            if (id(bedroom_temperature).state > 29) {
+              tempColor = id(red);
+            } else if (id(bedroom_temperature).state >= 26 && id(bedroom_temperature).state <= 28.9) {
+              tempColor = id(yellow);
+            } else if (id(bedroom_temperature).state >= 10 && id(bedroom_temperature).state <= 19) {
+              tempColor = id(light_blue);
+            } else if (id(bedroom_temperature).state < 9.9) {
+              tempColor = id(blue);
+            }
+            it.printf(x + 2, y + 8, id(arimo13), tempColor, TextAlign::LEFT, "Bedroom");
+            it.print(x + 69, y + 6, id(mdi_icons_small), tempColor, TextAlign::RIGHT, "󰔏");
+            it.printf(x + 32, y + 32, id(arimo48), tempColor, TextAlign::CENTER, "%.1f", id(bedroom_temperature).state);
+            it.printf(x + 32, y + 55, id(arimo14), tempColor, TextAlign::CENTER, "%s", "°C");
+          }
+          // Special handling for Button 7 (bathroom temperature)
+          else if (btn == 6) {  // Button 7
+            Color tempColor = id(white);
+            if (id(bathroom_temperature).state > 29) {
+              tempColor = id(red);
+            } else if (id(bathroom_temperature).state >= 26 && id(bathroom_temperature).state <= 28.9) {
+              tempColor = id(yellow);
+            } else if (id(bathroom_temperature).state >= 10 && id(bathroom_temperature).state <= 19) {
+              tempColor = id(light_blue);
+            } else if (id(bathroom_temperature).state < 9.9) {
+              tempColor = id(blue);
+            }
+            it.printf(x - 3, y + 8, id(arimo13), tempColor, TextAlign::LEFT, "Bathroom");
+            it.print(x + 69, y + 6, id(mdi_icons_small), tempColor, TextAlign::RIGHT, "󰔏");
+            it.printf(x + 32, y + 32, id(arimo48), tempColor, TextAlign::CENTER, "%.1f", id(bathroom_temperature).state);
+            it.printf(x + 32, y + 55, id(arimo14), tempColor, TextAlign::CENTER, "%s", "°C");
+          }
+          // Special handling for Button 8 (atelier temperature)
+          else if (btn == 7) {  // Button 8
+            Color tempColor = id(white);
+            if (id(atelier_temperature).state > 29) {
+              tempColor = id(red);
+            } else if (id(atelier_temperature).state >= 26 && id(atelier_temperature).state <= 28.9) {
+              tempColor = id(yellow);
+            } else if (id(atelier_temperature).state >= 10 && id(atelier_temperature).state <= 19) {
+              tempColor = id(light_blue);
+            } else if (id(atelier_temperature).state < 9.9) {
+              tempColor = id(blue);
+            }
+            it.printf(x + 2, y + 8, id(arimo13), tempColor, TextAlign::LEFT, "Atelier");
+            it.print(x + 69, y + 6, id(mdi_icons_small), tempColor, TextAlign::RIGHT, "󰔏");
+            it.printf(x + 32, y + 32, id(arimo48), tempColor, TextAlign::CENTER, "%.1f", id(atelier_temperature).state);
+            it.printf(x + 32, y + 55, id(arimo14), tempColor, TextAlign::CENTER, "%s", "°C");
+          }
+          else {
+            // Regular icon buttons
+            Color iconColor;
+            if (btn >= 8) {
+              iconColor = id(white);
+            } else {
+              switch(btn) {
+                case 0:
+                  iconColor = id(white);
+                  break;
+                case 1:
+                  iconColor = id(bright_blue);
+                  break;
+                case 2:
+                  iconColor = id(teal);
+                  break;
+                case 3:
+                  iconColor = id(green);
+                  break;
+                default:
+                  iconColor = id(white); // Default case
+                  break;
+              }
+            }
+            it.print(x + 32, y + 32, id(mdi_icons), iconColor, TextAlign::CENTER, icons[btn]);
+          }
+        }
+      }
