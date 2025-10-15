@@ -263,14 +263,14 @@ touchscreen:
   interrupt_pin: 36
   update_interval: 50ms
   threshold: 400
-  on_touch:
-    - lambda: |-
-          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
-              touch.x,
-              touch.y,
-              touch.x_raw,
-              touch.y_raw
-              );
+#  on_touch:
+#    - lambda: |-
+#          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
+#              touch.x,
+#              touch.y,
+#              touch.x_raw,
+#              touch.y_raw
+#              );
   calibration:
     x_min: 280
     x_max: 3860
@@ -293,18 +293,18 @@ display:
     dc_pin:
       number: 2
       ignore_strapping_warning: true
-    #reset_pin: 16
     rotation: 180
     invert_colors: false
-    #update_interval: never
     dimensions:
       height: 240
       width: 320
+#    reset_pin: 16
+#    update_interval: never
 
-    # # If you want to use a background image uncomment these lines.
-    #color_palette: IMAGE_ADAPTIVE
-    #color_palette_images:
-    #  - "images/smartpanel/smartpanel_bg.jpg"   
+# If you want to use a background image uncomment these lines.
+#    color_palette: IMAGE_ADAPTIVE
+#    color_palette_images:
+#      - "images/smartpanel/smartpanel_bg.jpg"   
 
     pages:      
       - id: lockscreen_page
