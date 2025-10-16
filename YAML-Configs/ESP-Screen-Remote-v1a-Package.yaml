@@ -95,18 +95,19 @@ sensor:
               id: back_light
               state: on
               brightness: 20%
-  - platform: adc
-    pin: GPIO34
-    name: "Input Voltage"
-    id: esp_voltage
-    update_interval: 10s
-    attenuation: 11db
-    filters:
-      - multiply: 32
 #  - platform: internal_temperature
 #    name: "Temperature"
 #    update_interval: 15s
-
+# [ Input Voltage Monitoring Config via Light Sensor ] #
+# Cannot use in conjunction with Light Sensor Monitoring
+#  - platform: adc
+#    pin: GPIO34
+#    name: "Input Voltage"
+#    id: esp_voltage
+#    update_interval: 10s
+#    attenuation: 11db
+#    filters:
+#      - multiply: 32
 
 binary_sensor:
   - platform: status
