@@ -75,6 +75,11 @@ sensor:
     name: "Uptime"
     id: uptime_s
     update_interval: 30s
+  - platform: adc
+    name: "Light Sensor"
+    pin: GPIO34
+    id: light_sensor
+    update_interval: 15s
 #  - platform: internal_temperature
 #    name: "Temperature"
 #    update_interval: 15s
@@ -94,6 +99,15 @@ binary_sensor:
   - platform: status
     id: wifi_connected
     name: "Wifi Connection Status"
+#  - platform: gpio
+#    pin: 
+#      number: GPIO27
+#      mode: INPUT_PULLDOWN
+#    name: "Motion Sensor"
+#    device_class: motion
+#    filters:
+#      - delayed_on: 100ms
+#      - delayed_off: 5s
   - platform: touchscreen
     name: Button 1
     x_min: 53
