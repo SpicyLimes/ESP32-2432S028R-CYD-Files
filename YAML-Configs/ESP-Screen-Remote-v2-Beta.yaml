@@ -113,6 +113,12 @@ font:
 #    id: background
 #    type: RGB565
 
+globals:
+  - id: display_on
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
 color:
   - id: ACTIVE
     hex: "0088FF"  
@@ -182,15 +188,30 @@ binary_sensor:
     filters:
       - delayed_on: 100ms
       - delayed_off: 5s
-#  - platform: gpio
-#    pin:
-#      number: GPIO0  # ESP32 Boot Button
-#      inverted: true
-#      mode:
-#        input: true
-#        pullup: true
-#    name: "Boot Button"
-#    on_press:
+  - platform: gpio
+    pin:
+      number: GPIO0  # ESP32 Boot Button
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "Boot Button"
+    on_press:
+      - lambda: |-
+          id(display_on) = !id(display_on);
+      - if:
+          condition:
+            lambda: 'return id(display_on);'
+          then:
+            - light.turn_on: back_light
+            - lambda: |-
+                id(my_display).set_enabled(true);
+            - logger.log: "Display turned ON"
+          else:
+            - light.turn_off: back_light
+            - lambda: |-
+                id(my_display).set_enabled(false);
+            - logger.log: "Display turned OFF"
   - platform: touchscreen
     name: Button 5
     x_min: 53
@@ -353,7 +374,7 @@ light:
     output: gpio_backlight_pwm
     name: "Backlight"
     id: back_light
-    restore_mode: ALWAYS_ON        
+    restore_mode: RESTORE_DEFAULT_ON
   - platform: rgb
     name: LED
     id: led
