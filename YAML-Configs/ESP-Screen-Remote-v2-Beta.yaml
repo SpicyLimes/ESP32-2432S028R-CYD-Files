@@ -113,12 +113,6 @@ font:
 #    id: background
 #    type: RGB565
 
-globals:
-  - id: audio_muted
-    type: bool
-    restore_value: yes
-    initial_value: 'false'
-
 color:
   - id: ACTIVE
     hex: "0088FF"  
