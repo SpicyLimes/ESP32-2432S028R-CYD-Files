@@ -272,9 +272,9 @@ touchscreen:
     y_min: 340
     y_max: 3860
   transform:
-    swap_xy: false
-    mirror_x: true
-    mirror_y: false
+    swap_xy: true
+    mirror_x: false
+    mirror_y: true
 
 display:
   - platform: ili9xxx
@@ -288,7 +288,7 @@ display:
     dc_pin:
       number: 2
       ignore_strapping_warning: true
-    rotation: 180
+    rotation: 90
     invert_colors: false
     dimensions:
       height: 240
