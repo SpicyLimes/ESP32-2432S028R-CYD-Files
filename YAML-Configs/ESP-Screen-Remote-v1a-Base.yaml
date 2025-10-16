@@ -36,4 +36,10 @@ time:
           # - component.update: my_display
 
 packages:
-  remote_package_shorthand: github://SpicyLimes/ESP32-2432S028R-CYD-Files/YAML-Configs/ESP-Screen-Remote-v1a-Package.yaml@main
+#  remote_package_shorthand: github://SpicyLimes/ESP32-2432S028R-CYD-Files/YAML-Configs/ESP-Screen-Remote-v1a-Package.yaml@main
+  remote_package_files:
+    url: https://github.com/SpicyLimes/ESP32-2432S028R-CYD-Files
+    files: YAML-Configs/ESP-Screen-Remote-v1a-Package.yaml
+    ref: main
+    refresh: 6h
+
