@@ -152,17 +152,17 @@ sensor:
               id: back_light
               state: on
               brightness: 20%
+  - platform: adc
+    pin: GPIO34
+    name: "Input Voltage"
+    id: esp_voltage
+    update_interval: 10s
+    attenuation: 11db
+    filters:
+      - multiply: 32
 #  - platform: internal_temperature
 #    name: "Temperature"
 #    update_interval: 15s
-#  - platform: adc
-#    pin: GPIO34
-#    name: "Input Voltage"
-#    id: esp_voltage
-#    update_interval: 10s
-#    attenuation: 11db
-#    filters:
-#      - multiply: 32 
 
 binary_sensor:
   - platform: status
@@ -170,7 +170,7 @@ binary_sensor:
     id: system_status
   - platform: status
     id: wifi_connected
-    name: "Wifi Connection Status"
+    name: "Wifi Status"
   - platform: gpio
     pin: 
       number: GPIO27
