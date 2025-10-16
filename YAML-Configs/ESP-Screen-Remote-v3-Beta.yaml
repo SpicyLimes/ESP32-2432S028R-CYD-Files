@@ -126,26 +126,26 @@ sensor:
     pin: GPIO34
     id: light_sensor
     update_interval: 10s
-    on_value_range:
-      - below: 0.1
-        then:
-          - light.control:
-              id: back_light
-              state: on
-              brightness: 100%
-      - above: 0.1
-        below: 0.28
-        then:
-          - light.control:
-              id: back_light
-              state: on
-              brightness: 50%
-      - above: 0.28
-        then:
-          - light.control:
-              id: back_light
-              state: on
-              brightness: 20%
+#    on_value_range:
+#      - below: 0.1
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 100%
+#      - above: 0.1
+#        below: 0.28
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 50%
+#      - above: 0.28
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 20%
   - platform: internal_temperature
     name: "CPU Temperature"
     update_interval: 30s
