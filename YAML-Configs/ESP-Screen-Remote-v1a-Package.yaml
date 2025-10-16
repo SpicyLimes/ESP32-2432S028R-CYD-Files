@@ -66,15 +66,35 @@ sensor:
   - platform: wifi_signal
     name: "WiFi Signal"
     update_interval: 60s
+  - platform: uptime
+    name: "Uptime"
+    id: uptime_s
+    update_interval: 30s
   - platform: adc
     name: "Light Sensor"
     pin: GPIO34
     id: light_sensor
     update_interval: 15s
-  - platform: uptime
-    name: "Uptime"
-    id: uptime_s
-    update_interval: 30s
+    on_value_range:
+      - below: 0.1
+        then:
+          - light.control:
+              id: back_light
+              state: on
+              brightness: 100%
+      - above: 0.1
+        below: 0.25
+        then:
+          - light.control:
+              id: back_light
+              state: on
+              brightness: 50%
+      - above: 0.25
+        then:
+          - light.control:
+              id: back_light
+              state: on
+              brightness: 10%
 #  - platform: internal_temperature
 #    name: "Temperature"
 #    update_interval: 15s
