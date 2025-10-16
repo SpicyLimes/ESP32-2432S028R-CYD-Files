@@ -112,7 +112,13 @@ font:
 #  - file: "images/my_background_image.jpg"
 #    id: background
 #    type: RGB565
-          
+
+globals:
+  - id: audio_muted
+    type: bool
+    restore_value: yes
+    initial_value: 'false'
+
 color:
   - id: ACTIVE
     hex: "0088FF"  
@@ -152,9 +158,9 @@ sensor:
               id: back_light
               state: on
               brightness: 20%
-#  - platform: internal_temperature
-#    name: "Temperature"
-#    update_interval: 15s
+  - platform: internal_temperature
+    name: "CPU Temperature"
+    update_interval: 30s
 # [ Input Voltage Monitoring Config via Light Sensor ] #
 # Cannot use in conjunction with Light Sensor Monitoring
 #  - platform: adc
@@ -182,6 +188,15 @@ binary_sensor:
     filters:
       - delayed_on: 100ms
       - delayed_off: 5s
+#  - platform: gpio
+#    pin:
+#      number: GPIO0  # ESP32 Boot Button
+#      inverted: true
+#      mode:
+#        input: true
+#        pullup: true
+#    name: "Boot Button"
+#    on_press:
   - platform: touchscreen
     name: Button 5
     x_min: 53
@@ -189,12 +204,13 @@ binary_sensor:
     y_min: 18
     y_max: 63
     on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "5"
-              device: "esphome-web-2c3858"
+      - rtttl.play: 'notify:d=16,o=6,b=200:c,e,g,e,c'
+#      then:
+#        - homeassistant.event:
+#            event: esphome.button_pressed
+#            data:
+#              button: "5"
+#              device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 6
     x_min: 53
@@ -202,12 +218,13 @@ binary_sensor:
     y_min: 72
     y_max: 115
     on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "6"
-              device: "esphome-web-2c3858"
+      - rtttl.play: 'success:d=16,o=6,b=180:c,e,g'
+#      then:
+#        - homeassistant.event:
+#            event: esphome.button_pressed
+#            data:
+#              button: "6"
+#              device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 7
     x_min: 53
@@ -215,12 +232,13 @@ binary_sensor:
     y_min: 126
     y_max: 169
     on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "7"
-              device: "esphome-web-2c3858"
+      - rtttl.play: 'doorbell:d=4,o=5,b=180:e6,8p,c6'
+#      then:
+#        - homeassistant.event:
+#            event: esphome.button_pressed
+#            data:
+#              button: "7"
+#              device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 8
     x_min: 53
@@ -228,12 +246,13 @@ binary_sensor:
     y_min: 178
     y_max: 224
     on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "8"
-              device: "esphome-web-2c3858"
+      - rtttl.play: "mario:d=4,o=5,b=125:e6,e6,16e6,16c6,e6,16g6,8c7"
+#      then:
+#        - homeassistant.event:
+#            event: esphome.button_pressed
+#            data:
+#              button: "8"
+#              device: "esphome-web-2c3858"
 
 text_sensor:
   - platform: template
@@ -323,31 +342,17 @@ output:
   - platform: ledc
     id: output_blue
     pin: GPIO17
-    inverted: true    
-  # [ Play Sound through Onboard 8-bit DAC Platform ] #
-  - platform: esp32_dac
-    id: dac_audio_out
+    inverted: true
+# [ PWM + RTTTL Audio Output on GPIO26/JST Connector ] #
+  - platform: ledc
     pin: GPIO26
+    id: rtttl_out
+    frequency: 1000Hz  # LEDC Base Frequency
 
-# [ Optional: Simple Speaker Driver for Beeps or Tones ] #
-# Requires 'output' configuration for 'esp32_dac'
-speaker:
-  - platform: driver
-    id: cyd_speaker
-    output: dac_audio_out
-
-# [ Optional: Media Player Config for Simple Sound Playback ] #
-# Requires 'output' configuration for 'esp32_dac'
-media_player:
-  - platform: speaker
-    name: "ESP32 Media Player"
-    id: cyd_media
-    media_pipeline:
-      speaker: cyd_speaker
-      num_channels: 1
-    announcement_pipeline:
-      speaker: cyd_speaker
-      num_channels: 1
+rtttl:
+  output: rtttl_out
+  id: my_rtttl
+  gain: 80%  # Volume Adjustment (20% - 100%)
 
 light:
   - platform: monochromatic
@@ -454,43 +459,43 @@ display:
 
             // Button 1
             int b1_pos_x = (it.get_width()/2) - 105;
-            if (id(button1).state == "off") {
+            if (id(button5).state == "off") {
               it.filled_circle(b1_pos_x, b_pos_y, 30, id(INACTIVE));
             } else {
               it.filled_circle(b1_pos_x, b_pos_y, 30, white);
             }
             it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F013D");
-            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Notify");
 
             // Button 2
             int b2_pos_x = (it.get_width()/2) - 35;
-            if (id(button2).state == "off") {
+            if (id(button6).state == "off") {
               it.filled_circle(b2_pos_x, b_pos_y, 30, id(INACTIVE));
             } else {
               it.filled_circle(b2_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F1157");
-            it.printf(b2_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Potty");
+            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F013D");
+            it.printf(b2_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Success");
 
             // Button 3
             int b3_pos_x = (it.get_width()/2) + 35;
-            if (id(button3).state == "off") {
+            if (id(button7).state == "off") {
               it.filled_circle(b3_pos_x, b_pos_y, 30, id(INACTIVE));
             } else {
               it.filled_circle(b3_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F09A1");
-            it.printf(b3_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Shower");
+            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F013E");
+            it.printf(b3_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Doorbell");
 
             // Button 4
             int b4_pos_x = (it.get_width()/2) + 105;
-            if (id(button4).state == "off") {
+            if (id(button8).state == "off") {
               it.filled_circle(b4_pos_x, b_pos_y, 30, id(INACTIVE));
             } else {
               it.filled_circle(b4_pos_x, b_pos_y, 30, white);
             }
             it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F013E");
-            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Mario");
 
             // Date Time
             std::string day_of_week = day_map[id(ha_time).now().day_of_week];    
