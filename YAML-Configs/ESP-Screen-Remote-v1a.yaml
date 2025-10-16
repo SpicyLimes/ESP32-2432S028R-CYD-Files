@@ -43,7 +43,7 @@ font:
   # gfonts://family[@weight]
   - file: "gfonts://Roboto@500"
     id: big_text
-    size: 60
+    size: 72
     bpp: 4
     glyphs:
       ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
@@ -56,7 +56,7 @@ font:
   # gfonts://family[@weight]
   - file: "gfonts://Roboto@300"
     id: notice_text
-    size: 16
+    size: 26
     bpp: 4
     glyphs:
       ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
@@ -245,7 +245,7 @@ text_sensor:
     entity_id: light.closet_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - component.update: my_display        
 
 switch:
   - platform: restart
@@ -434,7 +434,7 @@ display:
             else suffix = "th";
 
             // Print date in format: Friday, October 10th
-            it.printf(it.get_width()/2, it.get_height()/2 - 80, id(notice_text),
+            it.printf(it.get_width()/2, it.get_height()/2 - 82, id(notice_text),
                       id(Color::WHITE), TextAlign::CENTER,
                       "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
 
@@ -443,26 +443,7 @@ display:
             int hour = t.hour % 12;
             if (hour == 0) hour = 12;
             const char *ampm = t.hour < 12 ? "AM" : "PM";
-            it.printf(it.get_width()/2, it.get_height()/2 - 35, id(big_text),
+            it.printf(it.get_width()/2, it.get_height()/2 - 18, id(big_text),
                       id(Color::WHITE), TextAlign::CENTER,
                       "%d:%02d %s", hour, t.minute, ampm);
 
-            // ---- Connection Icons ----
-
-            // Home Assistant connection (top-left)
-            if (id(system_status)) {
-              // Connected → Blue icon (home-assistant)
-              it.printf(10, 10, id(materialdesign_icons_small), blue, TextAlign::TOP_LEFT, "\U000F07D0");
-            } else {
-              // Disconnected → Red icon (home-off)
-              it.printf(10, 10, id(materialdesign_icons_small), red, TextAlign::TOP_LEFT, "\U000F10D3");
-            }
-
-            // WiFi connection (top-right)
-            if (id(wifi_connected)) {
-              // Connected → Green icon (wifi-strength-4)
-              it.printf(it.get_width() - 10, 10, id(materialdesign_icons_small), green, TextAlign::TOP_RIGHT, "\U000F0928");
-            } else {
-              // Disconnected → Red icon (wifi-off)
-              it.printf(it.get_width() - 10, 10, id(materialdesign_icons_small), red, TextAlign::TOP_RIGHT, "\U000F092F");
-            }
