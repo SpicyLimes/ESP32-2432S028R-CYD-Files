@@ -35,6 +35,10 @@ time:
         # then:
           # - component.update: my_display
 
+web_server:
+  port: 80
+  version: 3
+
 packages:
 #  remote_package_shorthand: github://SpicyLimes/ESP32-2432S028R-CYD-Files/YAML-Configs/ESP-Screen-Remote-v1a-Package.yaml@main
   remote_package_files:
