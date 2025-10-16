@@ -114,7 +114,7 @@ binary_sensor:
     id: system_status
   - platform: status
     id: wifi_connected
-    name: "Wifi Connection Status"
+    name: "Wifi Status"
 #  - platform: gpio
 #    pin: 
 #      number: GPIO27
