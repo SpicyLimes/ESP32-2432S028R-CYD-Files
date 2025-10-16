@@ -45,5 +45,4 @@ packages:
     url: https://github.com/SpicyLimes/ESP32-2432S028R-CYD-Files
     files: YAML-Configs/ESP-Screen-Remote-v1a-Package.yaml
     ref: main
-    refresh: 6h
-
+    refresh: 5min
