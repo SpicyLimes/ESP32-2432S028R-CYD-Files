@@ -110,12 +110,12 @@ binary_sensor:
   - platform: status
     id: wifi_connected
     name: "Wifi Status"
-  - platform: gpio
-    pin:
-      number: GPIO27
-      mode: INPUT_PULLDOWN
-    name: "Motion Sensor"
-    device_class: motion
+#  - platform: gpio
+#    pin:
+#      number: GPIO27
+#      mode: INPUT_PULLDOWN
+#    name: "Motion Sensor"
+#    device_class: motion
 #    filters:
 #      - delayed_on: 100ms
 #      - delayed_off: 15s
