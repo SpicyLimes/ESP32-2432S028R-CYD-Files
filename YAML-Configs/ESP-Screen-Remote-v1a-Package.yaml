@@ -1,3 +1,7 @@
+web_server:
+  port: 80
+  version: 3
+
 font: 
   # gfonts://family[@weight]
   - file: "gfonts://Roboto@500"
@@ -49,12 +53,6 @@ font:
     size: 20
     # Light/Fan/Air Freshener/Closet
     glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F"]
-
-# If you want a background image for your screen you can uncomment the next lines. Keep in mind rendering images slows down refresh of the display
-#image:
-#  - file: "images/my_background_image.jpg"
-#    id: background
-#    type: RGB565
           
 color:
   - id: ACTIVE
@@ -75,29 +73,29 @@ sensor:
     pin: GPIO34
     id: light_sensor
     update_interval: 10s
-    on_value_range:
-      - below: 0.1
-        then:
-          - light.control:
-              id: back_light
-              state: on
-              brightness: 100%
-      - above: 0.1
-        below: 0.28
-        then:
-          - light.control:
-              id: back_light
-              state: on
-              brightness: 50%
-      - above: 0.28
-        then:
-          - light.control:
-              id: back_light
-              state: on
-              brightness: 20%
-#  - platform: internal_temperature
-#    name: "Temperature"
-#    update_interval: 15s
+#    on_value_range:
+#      - below: 0.1
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 100%
+#      - above: 0.1
+#        below: 0.28
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 50%
+#      - above: 0.28
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 20%
+  - platform: internal_temperature
+    name: "CPU Temperature"
+    update_interval: 30s
 # [ Input Voltage Monitoring Config via Light Sensor ] #
 # Cannot use in conjunction with Light Sensor Monitoring
 #  - platform: adc
@@ -116,15 +114,47 @@ binary_sensor:
   - platform: status
     id: wifi_connected
     name: "Wifi Status"
-#  - platform: gpio
-#    pin: 
-#      number: GPIO27
-#      mode: INPUT_PULLDOWN
-#    name: "Motion Sensor"
-#    device_class: motion
+  - platform: gpio
+    pin:
+      number: GPIO27
+      mode: INPUT_PULLDOWN
+    name: "Motion Sensor"
+    device_class: motion
 #    filters:
 #      - delayed_on: 100ms
-#      - delayed_off: 5s
+#      - delayed_off: 15s
+#    on_press:
+#      then:
+#        - light.turn_on:
+#            id: back_light
+#            brightness: 80%
+#        - light.turn_on:
+#            id: led
+#            red: 100%
+#            green: 100%
+#            blue: 100%
+#            brightness: 100%
+#    on_release:
+#      then:
+#        - light.turn_off: back_light
+#        - light.turn_on:
+#            id: led
+#            red: 100%
+#            green: 100%
+#            blue: 100%
+#            brightness: 60%
+#  - platform: gpio
+#    pin:
+#      number: GPIO0  # ESP32 Boot Button
+#      ignore_strapping_warning: true
+#      inverted: true
+#      mode:
+#        input: true
+#        pullup: true
+#    name: "Boot Button"
+#    on_press:
+#      then:
+#        - light.toggle: back_light
   - platform: touchscreen
     name: Button 1
     x_min: 53
@@ -245,11 +275,13 @@ spi:
   - id: lcd
     clk_pin: GPIO14
     mosi_pin: GPIO13
-    miso_pin: GPIO12
+    miso_pin:
+      number: 12
+      ignore_strapping_warning: true
   - id: my_touchscreen
     clk_pin: GPIO25
     mosi_pin: GPIO32
-    miso_pin: GPIO39  
+    miso_pin: GPIO39
 
 output:
   - platform: ledc
@@ -271,9 +303,9 @@ output:
 light:
   - platform: monochromatic
     output: gpio_backlight_pwm
-    name: "Power Display Backlight"
+    name: "Backlight"
     id: back_light
-    restore_mode: ALWAYS_ON        
+    restore_mode: RESTORE_DEFAULT_OFF
   - platform: rgb
     name: LED
     id: led
@@ -327,11 +359,6 @@ display:
 #    reset_pin: 16
 #    update_interval: never
 
-#    If you want to use a background image uncomment these lines.
-#    color_palette: IMAGE_ADAPTIVE
-#    color_palette_images:
-#      - "images/smartpanel/smartpanel_bg.jpg"   
-
     pages:      
       - id: lockscreen_page
         lambda: |-
@@ -361,8 +388,6 @@ display:
             {11, "November"},
             {12, "December"}
           };
-
-            //it.image(0, 0, id(background));
 
             auto white = Color(255, 255, 255);
             auto blue = Color(255, 122, 0);
