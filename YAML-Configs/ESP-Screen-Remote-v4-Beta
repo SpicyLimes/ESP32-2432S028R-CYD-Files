@@ -1,0 +1,516 @@
+esphome:
+  name: esphome-web-2c3858
+  friendly_name: Remote Screen
+  min_version: 2025.9.0
+  name_add_mac_suffix: false
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  # encryption:
+    # key: 
+
+ota:
+- platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  fast_connect: true
+#  on_connect:
+#    then:
+#      - light.turn_on:
+#          id: led
+#          red: 0%
+#          green: 100%
+#          blue: 0%
+#          brightness: 100%
+#  on_disconnect:
+#    then:
+#      - light.turn_on:
+#          id: led
+#          red: 100%
+#          green: 0%
+#          blue: 0%
+#          brightness: 100%
+
+# captive_portal:
+
+time:
+  - platform: homeassistant
+    id: ha_time
+    timezone: "America/Chicago"
+#     on_time:
+#       - seconds: 0
+#         minutes: /1 # Update every minute
+#         then:
+#           - component.update: my_display
+
+web_server:
+  port: 80
+  version: 3
+
+font: 
+  # gfonts://family[@weight]
+  - file: "gfonts://Roboto@500"
+    id: big_text
+    size: 72
+    bpp: 4
+    glyphs:
+      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
+       '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+       'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
+       'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']
+
+  # gfonts://family[@weight]
+  - file: "gfonts://Roboto@300"
+    id: notice_text
+    size: 26
+    bpp: 4
+    glyphs:
+      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
+       '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+       'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
+       'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']     
+
+  # gfonts://family[@weight]
+  - file: "gfonts://Roboto@400"
+    id: label
+    size: 13
+    bpp: 4
+    glyphs:
+      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
+       '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+       'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
+       'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']            
+
+  - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
+    id: materialdesign_icons
+    size: 35
+# [ Light/Fan/Air Freshener/Closet ] #
+    glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F", "\U000F1157", "\U000F09A1", "\U000F013E", "\U000F013D"]
+
+  - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
+    id: materialdesign_icons_small
+    size: 20
+# [ Light/Fan/Air Freshener/Closet ] #
+    glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F"]
+
+color:
+  - id: ACTIVE
+    hex: "0088FF"  
+  - id: INACTIVE
+    hex: "111111"
+
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    update_interval: 60s
+  - platform: uptime
+    name: "Uptime"
+    id: uptime_s
+    update_interval: 45s
+  - platform: adc
+    name: "Light Sensor"
+    pin: GPIO34
+    id: light_sensor
+    update_interval: 10s
+#    on_value_range:
+#      - below: 0.1
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 100%
+#      - above: 0.1
+#        below: 0.28
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 50%
+#      - above: 0.28
+#        then:
+#          - light.control:
+#              id: back_light
+#              state: on
+#              brightness: 20%
+  - platform: internal_temperature
+    name: "CPU Temperature"
+    update_interval: 30s
+# [ Input Voltage Monitoring Config via Light Sensor ] #
+# Cannot use in conjunction with Light Sensor Monitoring
+#  - platform: adc
+#    pin: GPIO34
+#    name: "Input Voltage"
+#    id: esp_voltage
+#    update_interval: 10s
+#    attenuation: 11db
+#    filters:
+#      - multiply: 32
+
+binary_sensor:
+  - platform: status
+    name: "Node Status"
+    id: system_status
+  - platform: status
+    id: wifi_connected
+    name: "Wifi Status"
+  - platform: gpio
+    pin:
+      number: GPIO27
+      mode: INPUT_PULLDOWN
+    name: "Motion Sensor"
+    device_class: motion
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 15s
+    on_press:
+      then:
+        - light.turn_on:
+            id: back_light
+            brightness: 80%
+        - light.turn_on:
+            id: led
+            red: 100%
+            green: 100%
+            blue: 100%
+            brightness: 100%
+    on_release:
+      then:
+        - light.turn_off: back_light
+        - light.turn_on:
+            id: led
+            red: 100%
+            green: 100%
+            blue: 100%
+            brightness: 60%
+#  - platform: gpio
+#    pin:
+#      number: GPIO0  # ESP32 Boot Button
+#      ignore_strapping_warning: true
+#      inverted: true
+#      mode:
+#        input: true
+#        pullup: true
+#    name: "Boot Button"
+#    on_press:
+#      then:
+#        - light.toggle: back_light
+  - platform: touchscreen
+    name: Button 5
+    x_min: 53
+    x_max: 131
+    y_min: 18
+    y_max: 63
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "5"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 6
+    x_min: 53
+    x_max: 131  
+    y_min: 72
+    y_max: 115
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "6"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 7
+    x_min: 53
+    x_max: 131   
+    y_min: 126
+    y_max: 169
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "7"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 8
+    x_min: 53
+    x_max: 131     
+    y_min: 178
+    y_max: 224
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "8"
+              device: "esphome-web-2c3858"
+
+text_sensor:
+  - platform: template
+    name: "Uptime (DD-HH-MM-SS)"
+    lambda: |-
+      uint32_t dur = id(uptime_s).state;
+      int dys = 0;
+      int hrs = 0;
+      int mnts = 0;
+      if (dur > 86399) {
+        dys = trunc(dur / 86400);
+        dur = dur - (dys * 86400);
+      }
+      if (dur > 3599) {
+        hrs = trunc(dur / 3600);
+        dur = dur - (hrs * 3600);
+      }
+      if (dur > 59) {
+        mnts = trunc(dur / 60);
+        dur = dur - (mnts * 60);
+      }
+      char buffer[17];
+      sprintf(buffer, "%ud %02uh %02um %02us", dys, hrs, mnts, dur);
+      return {buffer};
+    icon: mdi:clock-start
+    update_interval: 60s    
+  - platform: wifi_info
+    ip_address:
+      name: "IP Address"
+#    ssid:
+#      name: "WiFi SSID"
+#    bssid:
+#      name: "WiFi BSSID"
+  - platform: version
+    name: "Version"
+  - platform: homeassistant
+    id: button5
+    entity_id: input_boolean.esp32_placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button6
+    entity_id: input_boolean.esp32_placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button7
+    entity_id: input_boolean.esp32_placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button8
+    entity_id: input_boolean.esp32_placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display        
+
+switch:
+  - platform: restart
+    name: "Restart"  
+
+spi:
+  - id: lcd
+    clk_pin: GPIO14
+    mosi_pin: GPIO13
+    miso_pin:
+      number: 12
+      ignore_strapping_warning: true
+  - id: my_touchscreen
+    clk_pin: GPIO25
+    mosi_pin: GPIO32
+    miso_pin: GPIO39  
+
+output:
+  - platform: ledc
+    pin: GPIO21
+    id: gpio_backlight_pwm
+  - platform: ledc
+    id: output_red
+    pin: GPIO4
+    inverted: true
+  - platform: ledc
+    id: output_green
+    pin: GPIO16
+    inverted: true
+  - platform: ledc
+    id: output_blue
+    pin: GPIO17
+    inverted: true
+
+light:
+  - platform: monochromatic
+    output: gpio_backlight_pwm
+    name: "Backlight"
+    id: back_light
+    restore_mode: RESTORE_DEFAULT_OFF
+  - platform: rgb
+    name: LED
+    id: led
+    red: output_red
+    green: output_green
+    blue: output_blue
+    restore_mode: ALWAYS_OFF
+
+touchscreen:
+  platform: xpt2046
+  spi_id: my_touchscreen
+  cs_pin: 33
+  interrupt_pin: 36
+  update_interval: 50ms
+  threshold: 400
+#  on_touch:
+#    - lambda: |-
+#          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
+#              touch.x,
+#              touch.y,
+#              touch.x_raw,
+#              touch.y_raw
+#              );
+  calibration:
+    x_min: 280
+    x_max: 3860
+    y_min: 340
+    y_max: 3860
+  transform:
+    swap_xy: false
+    mirror_x: false
+    mirror_y: true
+
+display:
+  - platform: ili9xxx
+    id: my_display
+    spi_id: lcd
+    model: ILI9342
+    color_palette: 8BIT
+    cs_pin:
+      number: 15
+      ignore_strapping_warning: true
+    dc_pin:
+      number: 2
+      ignore_strapping_warning: true
+    rotation: 0
+    invert_colors: false
+    dimensions:
+      height: 240
+      width: 320
+#    reset_pin: 16
+#    update_interval: never
+
+    pages:      
+      - id: lockscreen_page
+        lambda: |-
+          std::map<std::uint8_t, std::string> day_map
+          {
+            {2, "Monday"},
+            {3, "Tuesday"},
+            {4, "Wednesday"},
+            {5, "Thursday"},
+            {6, "Friday"},
+            {7, "Saturday"},
+            {1, "Sunday"}
+          };
+
+          std::map<std::uint8_t, std::string> month_map
+          {
+            {1, "January"},
+            {2, "February"},
+            {3, "March"},
+            {4, "April"},
+            {5, "May"},
+            {6, "June"},
+            {7, "July"},
+            {8, "August"},
+            {9, "September"},
+            {10, "October"},
+            {11, "November"},
+            {12, "December"}
+          };
+
+            auto white = Color(255, 255, 255);
+            auto blue = Color(255, 122, 0);
+            auto green = Color(0, 200, 83);
+            auto red = Color(255, 59, 48);
+            
+            int b_pos_y = 170;
+
+            // Button 1
+            int b1_pos_x = (it.get_width()/2) - 105;
+            if (id(button5).state == "off") {
+              it.filled_circle(b1_pos_x, b_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b1_pos_x, b_pos_y, 30, white);
+            }
+            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F013D");
+            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+
+            // Button 2
+            int b2_pos_x = (it.get_width()/2) - 35;
+            if (id(button6).state == "off") {
+              it.filled_circle(b2_pos_x, b_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b2_pos_x, b_pos_y, 30, white);
+            }
+            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F013D");
+            it.printf(b2_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+
+            // Button 3
+            int b3_pos_x = (it.get_width()/2) + 35;
+            if (id(button7).state == "off") {
+              it.filled_circle(b3_pos_x, b_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b3_pos_x, b_pos_y, 30, white);
+            }
+            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F013E");
+            it.printf(b3_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+
+            // Button 4
+            int b4_pos_x = (it.get_width()/2) + 105;
+            if (id(button8).state == "off") {
+              it.filled_circle(b4_pos_x, b_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b4_pos_x, b_pos_y, 30, white);
+            }
+            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F013E");
+            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+
+            // Date Time
+            std::string day_of_week = day_map[id(ha_time).now().day_of_week];    
+            int day_of_month = id(ha_time).now().day_of_month;    
+            std::string month = month_map[id(ha_time).now().month];    
+
+            // Determine ordinal suffix
+            std::string suffix;
+            if (day_of_month % 10 == 1 && day_of_month % 100 != 11) suffix = "st";
+            else if (day_of_month % 10 == 2 && day_of_month % 100 != 12) suffix = "nd";
+            else if (day_of_month % 10 == 3 && day_of_month % 100 != 13) suffix = "rd";
+            else suffix = "th";
+
+            // Print date in format: Friday, October 10th
+            it.printf(it.get_width()/2, it.get_height()/2 - 82, id(notice_text),
+                      id(Color::WHITE), TextAlign::CENTER,
+                      "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
+
+            // Time (12-hour format with AM/PM)
+            auto t = id(ha_time).now();
+            int hour = t.hour % 12;
+            if (hour == 0) hour = 12;
+            const char *ampm = t.hour < 12 ? "AM" : "PM";
+            it.printf(it.get_width()/2, it.get_height()/2 - 18, id(big_text),
+                      id(Color::WHITE), TextAlign::CENTER,
+                      "%d:%02d %s", hour, t.minute, ampm);
