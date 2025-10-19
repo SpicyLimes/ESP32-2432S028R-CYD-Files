@@ -164,7 +164,7 @@ binary_sensor:
             data:
               button: "1"
               device: "esphome-web-e5cd38"
-        - rtttl.play: 'success:d=16,o=6,b=180:c,e,g'
+#        - rtttl.play: 'success:d=16,o=6,b=180:c,e,g'
   - platform: touchscreen
     name: Button 2
     x_min: 53
@@ -204,7 +204,7 @@ binary_sensor:
             data:
               button: "4"
               device: "esphome-web-e5cd38"
-        - rtttl.play: 'notify:d=16,o=6,b=200:c,e,g,e,c'
+#        - rtttl.play: 'notify:d=16,o=6,b=200:c,e,g,e,c'
 
 text_sensor:
   - platform: template
@@ -298,15 +298,15 @@ output:
     pin: GPIO17
     inverted: true
 # [ PWM + RTTTL Audio Output on GPIO26/JST Connector ] #
-  - platform: ledc
-    pin: GPIO26
-    id: rtttl_out
+#  - platform: ledc
+#    pin: GPIO26
+#    id: rtttl_out
 #    frequency: 500Hz  # Default 1000Hz - Spkr Default 0-20KHz 
 
-rtttl:
-  output: rtttl_out
-  id: my_rtttl
-  gain: 20%  # Volume Adjustment (20% - 100%)
+#rtttl:
+#  output: rtttl_out
+#  id: my_rtttl
+#  gain: 20%  # Volume Adjustment (20% - 100%)
 
 light:
   - platform: monochromatic
