@@ -242,7 +242,7 @@ text_sensor:
     name: "Version"
   - platform: homeassistant
     id: button1
-    entity_id: input_boolean.esp32_placeholder_toggle
+    entity_id: switch.bathroom_light
     on_value:
       then:
         - component.update: my_display
@@ -260,7 +260,7 @@ text_sensor:
         - component.update: my_display
   - platform: homeassistant
     id: button4
-    entity_id: input_boolean.esp32_placeholder_toggle
+    entity_id: automation.bathroom_motion_sensor_closet_light_modified
     on_value:
       then:
         - component.update: my_display        
