@@ -41,8 +41,8 @@ font:
   - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
     id: materialdesign_icons
     size: 35
-    # Light/Fan/Air Freshener/Closet
-    glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F", "\U000F1157", "\U000F09A1", "\U000F013E", "\U000F013D"]
+    # Swap/Light-Night/Light/Fan/Air Freshener/Closet
+    glyphs: ["\U000F0FE1", "\U000F1A4C", "\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F", "\U000F1157", "\U000F09A1", "\U000F013E", "\U000F013D"]
 
   - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
     id: materialdesign_icons_small
@@ -411,8 +411,8 @@ display:
             } else {
               it.filled_circle(b1_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F013D");
-            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 2
             int b2_pos_x = (it.get_width()/2) - 35;
@@ -441,8 +441,8 @@ display:
             } else {
               it.filled_circle(b4_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F013E");
-            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "");
+            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F0FE1");
+            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Motion");
 
             // Date Time
             std::string day_of_week = day_map[id(ha_time).now().day_of_week];    
