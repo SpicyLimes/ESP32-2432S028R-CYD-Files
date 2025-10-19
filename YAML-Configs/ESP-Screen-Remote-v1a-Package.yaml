@@ -301,7 +301,7 @@ output:
   - platform: ledc
     pin: GPIO26
     id: rtttl_out
-    frequency: 500Hz  # LEDC Base Frequency
+#    frequency: 500Hz  # Default 1000Hz - Spkr Default 0-20KHz 
 
 rtttl:
   output: rtttl_out
