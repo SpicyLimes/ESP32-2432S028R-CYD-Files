@@ -301,12 +301,12 @@ output:
   - platform: ledc
     pin: GPIO26
     id: rtttl_out
-    frequency: 1000Hz  # LEDC Base Frequency
+    frequency: 500Hz  # LEDC Base Frequency
 
 rtttl:
   output: rtttl_out
   id: my_rtttl
-  gain: 80%  # Volume Adjustment (20% - 100%)
+  gain: 20%  # Volume Adjustment (20% - 100%)
 
 light:
   - platform: monochromatic
