@@ -164,6 +164,7 @@ binary_sensor:
             data:
               button: "1"
               device: "esphome-web-e5cd38"
+        - rtttl.play: 'success:d=16,o=6,b=180:c,e,g'
   - platform: touchscreen
     name: Button 2
     x_min: 53
