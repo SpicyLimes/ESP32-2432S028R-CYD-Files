@@ -54,7 +54,7 @@ color:
   - id: ACTIVE
     hex: "0088FF"  
   - id: INACTIVE
-    hex: "111111"
+    hex: "444444"
   - id: SILVER
     hex: "808080"
   - id: YELLOW
@@ -63,6 +63,8 @@ color:
     hex: "00C853"
   - id: BLACK
     hex: "000000"
+  - id: WHITE
+    hex: "FFFFFF"
 
 sensor:
   - platform: wifi_signal
@@ -265,31 +267,31 @@ text_sensor:
     name: "Version"
   - platform: homeassistant
     id: button1
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_1
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button2
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_2
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button3
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_3
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button4
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_2
     on_value:
       then:
         - component.update: my_display        
   - platform: homeassistant
     id: button5
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_3
     on_value:
       then:
         - component.update: my_display
@@ -301,37 +303,37 @@ text_sensor:
         - component.update: my_display
   - platform: homeassistant
     id: button7
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_1
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button8
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_2
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button9
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_3
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button10
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_1
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button11
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_2
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button12
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_3
     on_value:
       then:
         - component.update: my_display
