@@ -522,7 +522,7 @@ display:
             int b1_pos_x = (it.get_width()/2) - 105;
             int b2_pos_x = (it.get_width()/2) - 35;
             int b3_pos_x = (it.get_width()/2) + 35;
-            int b1_pos_x = (it.get_width()/2) + 105;
+            int b4_pos_x = (it.get_width()/2) + 105;
 
             // Row 1
             // Button 1
