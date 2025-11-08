@@ -55,6 +55,14 @@ color:
     hex: "0088FF"  
   - id: INACTIVE
     hex: "111111"
+  - id: SILVER
+    hex: "808080"
+  - id: YELLOW
+    hex: "FFFF00"
+  - id: GREEN
+    hex: "00C853"
+  - id: BLACK
+    hex: "000000"
 
 sensor:
   - platform: wifi_signal
@@ -442,111 +450,147 @@ display:
             // Row 1: Buttons 1, 2, 3
             // Button 1
             if (id(button1).state == "off") {
-              it.filled_rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col1_x, row1_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row1_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col1_x, row1_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row1_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col1_x, row1_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(col1_x, row1_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 2
             if (id(button2).state == "off") {
-              it.filled_rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col2_x, row1_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row1_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col2_x, row1_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row1_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col2_x, row1_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(col2_x, row1_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 3
             if (id(button3).state == "off") {
-              it.filled_rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col3_x, row1_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row1_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col3_x, row1_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row1_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col3_x, row1_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(col3_x, row1_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Row 2: Buttons 4, 5, 6
             // Button 4
             if (id(button4).state == "off") {
-              it.filled_rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col1_x, row2_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row2_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col1_x, row2_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row2_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col1_x, row2_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(col1_x, row2_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 5
             if (id(button5).state == "off") {
-              it.filled_rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col2_x, row2_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row2_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col2_x, row2_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row2_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col2_x, row2_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(col2_x, row2_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 6
             if (id(button6).state == "off") {
-              it.filled_rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col3_x, row2_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row2_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col3_x, row2_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row2_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col3_x, row2_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(col3_x, row2_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Row 3: Buttons 7, 8, 9
             // Button 7
             if (id(button7).state == "off") {
-              it.filled_rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col1_x, row3_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row3_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col1_x, row3_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row3_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col1_x, row3_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(col1_x, row3_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 8
             if (id(button8).state == "off") {
-              it.filled_rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col2_x, row3_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row3_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col2_x, row3_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row3_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col2_x, row3_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(col2_x, row3_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 9
             if (id(button9).state == "off") {
-              it.filled_rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col3_x, row3_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row3_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col3_x, row3_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row3_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col3_x, row3_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(col3_x, row3_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Row 4: Buttons 10, 11, 12
             // Button 10
             if (id(button10).state == "off") {
-              it.filled_rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col1_x, row4_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row4_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col1_x, row4_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col1_x, row4_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col1_x, row4_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(col1_x, row4_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 11
             if (id(button11).state == "off") {
-              it.filled_rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col2_x, row4_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row4_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col2_x, row4_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col2_x, row4_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col2_x, row4_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(col2_x, row4_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 12
             if (id(button12).state == "off") {
-              it.filled_rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(INACTIVE));
+              it.rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.printf(col3_x, row4_y - 20, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row4_y + 5, id(label), id(SILVER), TextAlign::CENTER, "Light");
             } else {
-              it.filled_rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, white);
+              it.filled_rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
+              it.rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(YELLOW));
+              it.printf(col3_x, row4_y - 20, id(materialdesign_icons), id(GREEN), TextAlign::CENTER, "\U000F11E1");
+              it.printf(col3_x, row4_y + 5, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
-            it.printf(col3_x, row4_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(col3_x, row4_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
