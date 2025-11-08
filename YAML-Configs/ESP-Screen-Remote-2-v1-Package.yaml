@@ -242,28 +242,76 @@ text_sensor:
     name: "Version"
   - platform: homeassistant
     id: button1
-    entity_id: switch.bathroom_light
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button2
-    entity_id: input_boolean.esp32_bathroom_potty_toggle
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button3
-    entity_id: input_boolean.esp32_bathroom_shower_toggle
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button4
-    entity_id: automation.bathroom_motion_sensor_closet_light_modified
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - component.update: my_display        
+  - platform: homeassistant
+    id: button5
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button6
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button7
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button8
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button9
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button10
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button11
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
+  - platform: homeassistant
+    id: button12
+    entity_id: input_boolean.placeholder_toggle
+    on_value:
+      then:
+        - component.update: my_display
 
 switch:
   - platform: restart
@@ -370,102 +418,128 @@ display:
     pages:      
       - id: lockscreen_page
         lambda: |-
-          std::map<std::uint8_t, std::string> day_map
-          {
-            {2, "Monday"},
-            {3, "Tuesday"},
-            {4, "Wednesday"},
-            {5, "Thursday"},
-            {6, "Friday"},
-            {7, "Saturday"},
-            {1, "Sunday"}
-          };
-
-          std::map<std::uint8_t, std::string> month_map
-          {
-            {1, "January"},
-            {2, "February"},
-            {3, "March"},
-            {4, "April"},
-            {5, "May"},
-            {6, "June"},
-            {7, "July"},
-            {8, "August"},
-            {9, "September"},
-            {10, "October"},
-            {11, "November"},
-            {12, "December"}
-          };
-
             auto white = Color(255, 255, 255);
             auto blue = Color(255, 122, 0);
             auto green = Color(0, 200, 83);
             auto red = Color(255, 59, 48);
             
-            int b_pos_y = 170;
+            int b1_pos_y = 60;
+            int b2_pos_y = 120;
+            int b3_pos_y = 180;
 
-            // Button 1
             int b1_pos_x = (it.get_width()/2) - 105;
+            int b2_pos_x = (it.get_width()/2) - 35;
+            int b3_pos_x = (it.get_width()/2) + 35;
+
+            // Row 1
+            // Button 1
             if (id(button1).state == "off") {
-              it.filled_circle(b1_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.filled_circle(b1_pos_x, b1_pos_y, 30, id(INACTIVE));
             } else {
-              it.filled_circle(b1_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b1_pos_x, b1_pos_y, 30, white);
             }
-            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(b1_pos_x, b1_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b1_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 2
-            int b2_pos_x = (it.get_width()/2) - 35;
             if (id(button2).state == "off") {
-              it.filled_circle(b2_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.filled_circle(b2_pos_x, b1_pos_y, 30, id(INACTIVE));
             } else {
-              it.filled_circle(b2_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b2_pos_x, b1_pos_y, 30, white);
             }
-            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F1157");
-            it.printf(b2_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Potty");
+            it.printf(b2_pos_x, b1_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(b2_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 3
-            int b3_pos_x = (it.get_width()/2) + 35;
             if (id(button3).state == "off") {
-              it.filled_circle(b3_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.filled_circle(b3_pos_x, b1_pos_y, 30, id(INACTIVE));
             } else {
-              it.filled_circle(b3_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b3_pos_x, b1_pos_y, 30, white);
             }
-            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F09A1");
-            it.printf(b3_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Shower");
+            it.printf(b3_pos_x, b1_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(b3_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 4
-            int b4_pos_x = (it.get_width()/2) + 105;
             if (id(button4).state == "off") {
-              it.filled_circle(b4_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.filled_circle(b4_pos_x, b1_pos_y, 30, id(INACTIVE));
             } else {
-              it.filled_circle(b4_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b4_pos_x, b1_pos_y, 30, white);
             }
-            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F0FE1");
-            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Motion");
+            it.printf(b4_pos_x, b1_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b4_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
-            // Date Time
-            std::string day_of_week = day_map[id(ha_time).now().day_of_week];    
-            int day_of_month = id(ha_time).now().day_of_month;    
-            std::string month = month_map[id(ha_time).now().month];    
 
-            // Determine ordinal suffix
-            std::string suffix;
-            if (day_of_month % 10 == 1 && day_of_month % 100 != 11) suffix = "st";
-            else if (day_of_month % 10 == 2 && day_of_month % 100 != 12) suffix = "nd";
-            else if (day_of_month % 10 == 3 && day_of_month % 100 != 13) suffix = "rd";
-            else suffix = "th";
+            // Row 2
+            // Button 5
+            if (id(button5).state == "off") {
+              it.filled_circle(b1_pos_x, b2_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b1_pos_x, b2_pos_y, 30, white);
+            }
+            it.printf(b1_pos_x, b2_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b1_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
-            // Print date in format: Friday, October 10th
-            it.printf(it.get_width()/2, it.get_height()/2 - 82, id(notice_text),
-                      id(Color::WHITE), TextAlign::CENTER,
-                      "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
+            // Button 6
+            if (id(button6).state == "off") {
+              it.filled_circle(b2_pos_x, b2_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b2_pos_x, b2_pos_y, 30, white);
+            }
+            it.printf(b2_pos_x, b2_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(b2_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
 
-            // Time (12-hour format with AM/PM)
-            auto t = id(ha_time).now();
-            int hour = t.hour % 12;
-            if (hour == 0) hour = 12;
-            const char *ampm = t.hour < 12 ? "AM" : "PM";
-            it.printf(it.get_width()/2, it.get_height()/2 - 18, id(big_text),
-                      id(Color::WHITE), TextAlign::CENTER,
-                      "%d:%02d %s", hour, t.minute, ampm);
+            // Button 7
+            if (id(button7).state == "off") {
+              it.filled_circle(b3_pos_x, b2_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b3_pos_x, b2_pos_y, 30, white);
+            }
+            it.printf(b3_pos_x, b2_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(b3_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+
+            // Button 8
+            if (id(button8).state == "off") {
+              it.filled_circle(b4_pos_x, b2_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b4_pos_x, b2_pos_y, 30, white);
+            }
+            it.printf(b4_pos_x, b2_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b4_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+
+
+            // Row 3
+            // Button 9
+            if (id(button9).state == "off") {
+              it.filled_circle(b1_pos_x, b3_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b1_pos_x, b3_pos_y, 30, white);
+            }
+            it.printf(b1_pos_x, b3_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b1_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+
+            // Button 10
+            if (id(button10).state == "off") {
+              it.filled_circle(b2_pos_x, b3_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b2_pos_x, b3_pos_y, 30, white);
+            }
+            it.printf(b2_pos_x, b3_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(b2_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+
+            // Button 11
+            if (id(button11).state == "off") {
+              it.filled_circle(b3_pos_x, b3_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b3_pos_x, b3_pos_y, 30, white);
+            }
+            it.printf(b3_pos_x, b3_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(b3_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+
+            // Button 12
+            if (id(button12).state == "off") {
+              it.filled_circle(b4_pos_x, b3_pos_y, 30, id(INACTIVE));
+            } else {
+              it.filled_circle(b4_pos_x, b3_pos_y, 30, white);
+            }
+            it.printf(b4_pos_x, b3_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b4_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
