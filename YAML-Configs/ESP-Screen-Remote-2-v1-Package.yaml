@@ -163,10 +163,113 @@ binary_sensor:
             event: esphome.button_pressed
             data:
               button: "1"
-              device: "esphome-web-e5cd38"
-#        - rtttl.play: 'success:d=16,o=6,b=180:c,e,g'
+              device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 2
+    x_min: 123
+    x_max: 201
+    y_min: 18
+    y_max: 63
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "2"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 3
+    x_min: 193
+    x_max: 271
+    y_min: 18
+    y_max: 63
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "3"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 4
+    x_min: 263
+    x_max: 341
+    y_min: 18
+    y_max: 63
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "4"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 5
+    x_min: 53
+    x_max: 131
+    y_min: 72
+    y_max: 115
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "5"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 6
+    x_min: 123
+    x_max: 201
+    y_min: 72
+    y_max: 115
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "6"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 7
+    x_min: 193
+    x_max: 271
+    y_min: 72
+    y_max: 115
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "7"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 8
+    x_min: 263
+    x_max: 341
+    y_min: 72
+    y_max: 115
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "8"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 9
+    x_min: 53
+    x_max: 131
+    y_min: 18
+    y_max: 63
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "9"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Button 10
     x_min: 53
     x_max: 131  
     y_min: 72
@@ -176,10 +279,10 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "2"
-              device: "esphome-web-e5cd38"
+              button: "10"
+              device: "esphome-web-2c3858"
   - platform: touchscreen
-    name: Button 3
+    name: Button 11
     x_min: 53
     x_max: 131   
     y_min: 126
@@ -189,10 +292,10 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "3"
-              device: "esphome-web-e5cd38"
+              button: "11"
+              device: "esphome-web-2c3858"
   - platform: touchscreen
-    name: Button 4
+    name: Button 12
     x_min: 53
     x_max: 131     
     y_min: 178
@@ -202,35 +305,34 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "4"
-              device: "esphome-web-e5cd38"
-#        - rtttl.play: 'notify:d=16,o=6,b=200:c,e,g,e,c'
+              button: "12"
+              device: "esphome-web-2c3858"
 
 text_sensor:
-  - platform: template
-    name: "Uptime (DD-HH-MM-SS)"
-    lambda: |-
-      uint32_t dur = id(uptime_s).state;
-      int dys = 0;
-      int hrs = 0;
-      int mnts = 0;
-      if (dur > 86399) {
-        dys = trunc(dur / 86400);
-        dur = dur - (dys * 86400);
-      }
-      if (dur > 3599) {
-        hrs = trunc(dur / 3600);
-        dur = dur - (hrs * 3600);
-      }
-      if (dur > 59) {
-        mnts = trunc(dur / 60);
-        dur = dur - (mnts * 60);
-      }
-      char buffer[17];
-      sprintf(buffer, "%ud %02uh %02um %02us", dys, hrs, mnts, dur);
-      return {buffer};
-    icon: mdi:clock-start
-    update_interval: 60s    
+#  - platform: template
+#    name: "Uptime (DD-HH-MM-SS)"
+#    lambda: |-
+#      uint32_t dur = id(uptime_s).state;
+#      int dys = 0;
+#      int hrs = 0;
+#      int mnts = 0;
+#      if (dur > 86399) {
+#        dys = trunc(dur / 86400);
+#        dur = dur - (dys * 86400);
+#      }
+#      if (dur > 3599) {
+#        hrs = trunc(dur / 3600);
+#        dur = dur - (hrs * 3600);
+#      }
+#      if (dur > 59) {
+#        mnts = trunc(dur / 60);
+#        dur = dur - (mnts * 60);
+#      }
+#      char buffer[17];
+#      sprintf(buffer, "%ud %02uh %02um %02us", dys, hrs, mnts, dur);
+#      return {buffer};
+#    icon: mdi:clock-start
+#    update_interval: 60s    
   - platform: wifi_info
     ip_address:
       name: "IP Address"
@@ -345,16 +447,6 @@ output:
     id: output_blue
     pin: GPIO17
     inverted: true
-# [ PWM + RTTTL Audio Output on GPIO26/JST Connector ] #
-#  - platform: ledc
-#    pin: GPIO26
-#    id: rtttl_out
-#    frequency: 500Hz  # Default 1000Hz - Spkr Default 0-20KHz 
-
-#rtttl:
-#  output: rtttl_out
-#  id: my_rtttl
-#  gain: 20%  # Volume Adjustment (20% - 100%)
 
 light:
   - platform: monochromatic
@@ -430,6 +522,7 @@ display:
             int b1_pos_x = (it.get_width()/2) - 105;
             int b2_pos_x = (it.get_width()/2) - 35;
             int b3_pos_x = (it.get_width()/2) + 35;
+            int b1_pos_x = (it.get_width()/2) + 105;
 
             // Row 1
             // Button 1
