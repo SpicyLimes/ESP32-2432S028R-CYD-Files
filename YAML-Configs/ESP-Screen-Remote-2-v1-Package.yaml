@@ -113,7 +113,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "1"
+              button: "Macro 1"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 2
@@ -126,7 +126,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "2"
+              button: "Macro 2"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 3
@@ -139,7 +139,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "3"
+              button: "Macro 3"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 4
@@ -152,7 +152,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "4"
+              button: "Macro 4"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 5
@@ -165,7 +165,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "5"
+              button: "Macro 5"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 6
@@ -178,7 +178,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "6"
+              button: "Macro 6"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 7
@@ -191,7 +191,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "7"
+              button: "Macro 7"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 8
@@ -204,7 +204,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "8"
+              button: "Macro 8"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 9
@@ -217,7 +217,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "9"
+              button: "Macro 9"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 10
@@ -230,7 +230,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "10"
+              button: "Macro 10"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 11
@@ -243,7 +243,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "11"
+              button: "Macro 11"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 12
@@ -256,7 +256,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "12"
+              button: "Macro 12"
               device: "esphome-web-2c3858"
 
 text_sensor:
@@ -436,7 +436,7 @@ display:
             
             int btn_size = 60;
             int btn_half = 30;
-            int spacing = 20;
+            int spacing = 10;
             
             // Calculate positions for 3 columns
             int col1_x = 40;  // Left column
