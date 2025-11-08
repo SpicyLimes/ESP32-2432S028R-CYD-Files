@@ -69,39 +69,9 @@ sensor:
     pin: GPIO34
     id: light_sensor
     update_interval: 10s
-#    on_value_range:
-#      - below: 0.1
-#        then:
-#          - light.control:
-#              id: back_light
-#              state: on
-#              brightness: 100%
-#      - above: 0.1
-#        below: 0.28
-#        then:
-#          - light.control:
-#              id: back_light
-#              state: on
-#              brightness: 50%
-#      - above: 0.28
-#        then:
-#          - light.control:
-#              id: back_light
-#              state: on
-#              brightness: 20%
   - platform: internal_temperature
     name: "CPU Temperature"
     update_interval: 30s
-# [ Input Voltage Monitoring Config via Light Sensor ] #
-# Cannot use in conjunction with Light Sensor Monitoring
-#  - platform: adc
-#    pin: GPIO34
-#    name: "Input Voltage"
-#    id: esp_voltage
-#    update_interval: 10s
-#    attenuation: 11db
-#    filters:
-#      - multiply: 32
 
 binary_sensor:
   - platform: status
@@ -110,35 +80,6 @@ binary_sensor:
   - platform: status
     id: wifi_connected
     name: "Wifi Status"
-#  - platform: gpio
-#    pin:
-#      number: GPIO27
-#      mode: INPUT_PULLDOWN
-#    name: "Motion Sensor"
-#    device_class: motion
-#    filters:
-#      - delayed_on: 100ms
-#      - delayed_off: 15s
-#    on_press:
-#      then:
-#        - light.turn_on:
-#            id: back_light
-#            brightness: 80%
-#        - light.turn_on:
-#            id: led
-#            red: 100%
-#            green: 100%
-#            blue: 100%
-#            brightness: 100%
-#    on_release:
-#      then:
-#        - light.turn_off: back_light
-#        - light.turn_on:
-#            id: led
-#            red: 100%
-#            green: 100%
-#            blue: 100%
-#            brightness: 60%
   - platform: gpio
     pin:
       number: GPIO0  # ESP32 Boot Button
@@ -153,10 +94,10 @@ binary_sensor:
         - light.toggle: back_light
   - platform: touchscreen
     name: Button 1
-    x_min: 53
-    x_max: 131
-    y_min: 18
-    y_max: 63
+    x_min: 10
+    x_max: 70
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -166,10 +107,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 2
-    x_min: 123
-    x_max: 201
-    y_min: 18
-    y_max: 63
+    x_min: 90
+    x_max: 150
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -179,10 +120,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 3
-    x_min: 193
-    x_max: 271
-    y_min: 18
-    y_max: 63
+    x_min: 170
+    x_max: 230
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -192,10 +133,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 4
-    x_min: 263
-    x_max: 341
-    y_min: 18
-    y_max: 63
+    x_min: 10
+    x_max: 70
+    y_min: 90
+    y_max: 150
     on_press:
       then:
         - homeassistant.event:
@@ -205,10 +146,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 5
-    x_min: 53
-    x_max: 131
-    y_min: 72
-    y_max: 115
+    x_min: 90
+    x_max: 150
+    y_min: 90
+    y_max: 150
     on_press:
       then:
         - homeassistant.event:
@@ -218,10 +159,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 6
-    x_min: 123
-    x_max: 201
-    y_min: 72
-    y_max: 115
+    x_min: 170
+    x_max: 230
+    y_min: 90
+    y_max: 150
     on_press:
       then:
         - homeassistant.event:
@@ -231,10 +172,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 7
-    x_min: 193
-    x_max: 271
-    y_min: 72
-    y_max: 115
+    x_min: 10
+    x_max: 70
+    y_min: 170
+    y_max: 230
     on_press:
       then:
         - homeassistant.event:
@@ -244,10 +185,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 8
-    x_min: 263
-    x_max: 341
-    y_min: 72
-    y_max: 115
+    x_min: 90
+    x_max: 150
+    y_min: 170
+    y_max: 230
     on_press:
       then:
         - homeassistant.event:
@@ -257,10 +198,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 9
-    x_min: 53
-    x_max: 131
-    y_min: 18
-    y_max: 63
+    x_min: 170
+    x_max: 230
+    y_min: 170
+    y_max: 230
     on_press:
       then:
         - homeassistant.event:
@@ -270,10 +211,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 10
-    x_min: 53
-    x_max: 131  
-    y_min: 72
-    y_max: 115
+    x_min: 10
+    x_max: 70
+    y_min: 250
+    y_max: 310
     on_press:
       then:
         - homeassistant.event:
@@ -283,10 +224,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 11
-    x_min: 53
-    x_max: 131   
-    y_min: 126
-    y_max: 169
+    x_min: 90
+    x_max: 150
+    y_min: 250
+    y_max: 310
     on_press:
       then:
         - homeassistant.event:
@@ -296,10 +237,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Button 12
-    x_min: 53
-    x_max: 131     
-    y_min: 178
-    y_max: 224
+    x_min: 170
+    x_max: 230
+    y_min: 250
+    y_max: 310
     on_press:
       then:
         - homeassistant.event:
@@ -309,37 +250,9 @@ binary_sensor:
               device: "esphome-web-2c3858"
 
 text_sensor:
-#  - platform: template
-#    name: "Uptime (DD-HH-MM-SS)"
-#    lambda: |-
-#      uint32_t dur = id(uptime_s).state;
-#      int dys = 0;
-#      int hrs = 0;
-#      int mnts = 0;
-#      if (dur > 86399) {
-#        dys = trunc(dur / 86400);
-#        dur = dur - (dys * 86400);
-#      }
-#      if (dur > 3599) {
-#        hrs = trunc(dur / 3600);
-#        dur = dur - (hrs * 3600);
-#      }
-#      if (dur > 59) {
-#        mnts = trunc(dur / 60);
-#        dur = dur - (mnts * 60);
-#      }
-#      char buffer[17];
-#      sprintf(buffer, "%ud %02uh %02um %02us", dys, hrs, mnts, dur);
-#      return {buffer};
-#    icon: mdi:clock-start
-#    update_interval: 60s    
   - platform: wifi_info
     ip_address:
       name: "IP Address"
-#    ssid:
-#      name: "WiFi SSID"
-#    bssid:
-#      name: "WiFi BSSID"
   - platform: version
     name: "Version"
   - platform: homeassistant
@@ -469,23 +382,15 @@ touchscreen:
   interrupt_pin: 36
   update_interval: 50ms
   threshold: 400
-#  on_touch:
-#    - lambda: |-
-#          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
-#              touch.x,
-#              touch.y,
-#              touch.x_raw,
-#              touch.y_raw
-#              );
   calibration:
     x_min: 280
     x_max: 3860
     y_min: 340
     y_max: 3860
   transform:
-    swap_xy: false
+    swap_xy: true
     mirror_x: false
-    mirror_y: true
+    mirror_y: false
 
 display:
   - platform: ili9xxx
@@ -499,13 +404,11 @@ display:
     dc_pin:
       number: 2
       ignore_strapping_warning: true
-    rotation: 0
+    rotation: 90
     invert_colors: false
     dimensions:
       height: 240
       width: 320
-#    reset_pin: 16
-#    update_interval: never
 
     pages:      
       - id: lockscreen_page
@@ -514,125 +417,136 @@ display:
             auto blue = Color(255, 122, 0);
             auto green = Color(0, 200, 83);
             auto red = Color(255, 59, 48);
+            auto black = Color(0, 0, 0);
             
-            int b1_pos_y = 60;
-            int b2_pos_y = 120;
-            int b3_pos_y = 180;
+            // Portrait mode: 240 wide x 320 tall
+            // 3 columns, 4 rows
+            // Button size: 60x60
+            // Spacing between buttons: 20 pixels
+            
+            int btn_size = 60;
+            int btn_half = 30;
+            int spacing = 20;
+            
+            // Calculate positions for 3 columns
+            int col1_x = 40;  // Left column
+            int col2_x = 120; // Center column
+            int col3_x = 200; // Right column
+            
+            // Calculate positions for 4 rows
+            int row1_y = 40;  // Top row
+            int row2_y = 120; // Second row
+            int row3_y = 200; // Third row
+            int row4_y = 280; // Bottom row
 
-            int b1_pos_x = (it.get_width()/2) - 105;
-            int b2_pos_x = (it.get_width()/2) - 35;
-            int b3_pos_x = (it.get_width()/2) + 35;
-            int b4_pos_x = (it.get_width()/2) + 105;
-
-            // Row 1
+            // Row 1: Buttons 1, 2, 3
             // Button 1
             if (id(button1).state == "off") {
-              it.filled_circle(b1_pos_x, b1_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b1_pos_x, b1_pos_y, 30, white);
+              it.filled_rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b1_pos_x, b1_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b1_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col1_x, row1_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(col1_x, row1_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 2
             if (id(button2).state == "off") {
-              it.filled_circle(b2_pos_x, b1_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b2_pos_x, b1_pos_y, 30, white);
+              it.filled_rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b2_pos_x, b1_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(b2_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col2_x, row1_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(col2_x, row1_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 3
             if (id(button3).state == "off") {
-              it.filled_circle(b3_pos_x, b1_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b3_pos_x, b1_pos_y, 30, white);
+              it.filled_rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b3_pos_x, b1_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(b3_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col3_x, row1_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(col3_x, row1_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
+            // Row 2: Buttons 4, 5, 6
             // Button 4
             if (id(button4).state == "off") {
-              it.filled_circle(b4_pos_x, b1_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b4_pos_x, b1_pos_y, 30, white);
+              it.filled_rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b4_pos_x, b1_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b4_pos_x, b1_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col1_x, row2_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(col1_x, row2_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
-
-            // Row 2
             // Button 5
             if (id(button5).state == "off") {
-              it.filled_circle(b1_pos_x, b2_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b1_pos_x, b2_pos_y, 30, white);
+              it.filled_rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b1_pos_x, b2_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b1_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col2_x, row2_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(col2_x, row2_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 6
             if (id(button6).state == "off") {
-              it.filled_circle(b2_pos_x, b2_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b2_pos_x, b2_pos_y, 30, white);
+              it.filled_rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b2_pos_x, b2_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(b2_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col3_x, row2_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(col3_x, row2_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
+            // Row 3: Buttons 7, 8, 9
             // Button 7
             if (id(button7).state == "off") {
-              it.filled_circle(b3_pos_x, b2_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b3_pos_x, b2_pos_y, 30, white);
+              it.filled_rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b3_pos_x, b2_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(b3_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col1_x, row3_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(col1_x, row3_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 8
             if (id(button8).state == "off") {
-              it.filled_circle(b4_pos_x, b2_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b4_pos_x, b2_pos_y, 30, white);
+              it.filled_rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b4_pos_x, b2_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b4_pos_x, b2_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col2_x, row3_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(col2_x, row3_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
-
-            // Row 3
             // Button 9
             if (id(button9).state == "off") {
-              it.filled_circle(b1_pos_x, b3_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b1_pos_x, b3_pos_y, 30, white);
+              it.filled_rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b1_pos_x, b3_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b1_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col3_x, row3_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(col3_x, row3_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
+            // Row 4: Buttons 10, 11, 12
             // Button 10
             if (id(button10).state == "off") {
-              it.filled_circle(b2_pos_x, b3_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b2_pos_x, b3_pos_y, 30, white);
+              it.filled_rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b2_pos_x, b3_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(b2_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col1_x, row4_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(col1_x, row4_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 11
             if (id(button11).state == "off") {
-              it.filled_circle(b3_pos_x, b3_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b3_pos_x, b3_pos_y, 30, white);
+              it.filled_rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b3_pos_x, b3_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
-            it.printf(b3_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col2_x, row4_y, id(materialdesign_icons), id(ACTIVE), TextAlign::CENTER, "\U000F11E1");
+            it.printf(col2_x, row4_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
 
             // Button 12
             if (id(button12).state == "off") {
-              it.filled_circle(b4_pos_x, b3_pos_y, 30, id(INACTIVE));
+              it.filled_rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(INACTIVE));
             } else {
-              it.filled_circle(b4_pos_x, b3_pos_y, 30, white);
+              it.filled_rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, white);
             }
-            it.printf(b4_pos_x, b3_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b4_pos_x, b3_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(col3_x, row4_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+            it.printf(col3_x, row4_y + 25, id(label), id(Color::WHITE), TextAlign::CENTER, "Light");
