@@ -291,13 +291,13 @@ text_sensor:
         - component.update: my_display        
   - platform: homeassistant
     id: button5
-    entity_id: input_boolean.esp32_test_toggle_3
+    entity_id: input_boolean.esp32_test_toggle_2
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: button6
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: input_boolean.esp32_test_toggle_3
     on_value:
       then:
         - component.update: my_display
