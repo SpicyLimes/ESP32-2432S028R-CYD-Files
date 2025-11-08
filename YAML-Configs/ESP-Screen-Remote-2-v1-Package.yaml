@@ -139,18 +139,18 @@ binary_sensor:
 #            green: 100%
 #            blue: 100%
 #            brightness: 60%
-#  - platform: gpio
-#    pin:
-#      number: GPIO0  # ESP32 Boot Button
-#      ignore_strapping_warning: true
-#      inverted: true
-#      mode:
-#        input: true
-#        pullup: true
-#    name: "Boot Button"
-#    on_press:
-#      then:
-#        - light.toggle: back_light
+  - platform: gpio
+    pin:
+      number: GPIO0  # ESP32 Boot Button
+      ignore_strapping_warning: true
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "Boot Button"
+    on_press:
+      then:
+        - light.toggle: back_light
   - platform: touchscreen
     name: Button 1
     x_min: 53
