@@ -401,6 +401,8 @@ display:
             auto blue = Color(255, 122, 0);
             auto green = Color(0, 200, 83);
             auto red = Color(255, 59, 48);
+            auto yellow = Color(255, 240, 0);
+            auto orange = Color(255,170,0);
             
             int b_pos_y = 170;
 
@@ -417,7 +419,7 @@ display:
             // Button 2
             int b2_pos_x = (it.get_width()/2) - 35;
             if (id(button2).state == "off") {
-              it.filled_circle(b2_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.circle(b2_pos_x, b_pos_y, 30, orange);
             } else {
               it.filled_circle(b2_pos_x, b_pos_y, 30, white);
             }
@@ -457,7 +459,7 @@ display:
             else suffix = "th";
 
             // Print date in format: Friday, October 10th
-            it.printf(it.get_width()/2, it.get_height()/2 - 82, id(notice_text),
+            it.printf(it.get_width()/2, it.get_height()/2 - 80, id(notice_text),
                       id(Color::WHITE), TextAlign::CENTER,
                       "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
 
