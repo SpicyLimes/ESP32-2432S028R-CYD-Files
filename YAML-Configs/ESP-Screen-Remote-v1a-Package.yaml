@@ -413,44 +413,48 @@ display:
             int b1_pos_x = (it.get_width()/2) - 105;
             if (id(button1).state == "off") {
               it.circle(b1_pos_x, b_pos_y, 30, orange);
+              it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F11E1");
             } else {
-              it.circle(b1_pos_x, b_pos_y, 30.5, orange);
-              it.filled_circle(b1_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b1_pos_x, b_pos_y, 30, silver);
+              it.circle(b1_pos_x, b_pos_y, 31, orange);
+              it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F11E1");
             }
-            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), yellow, TextAlign::CENTER, "\U000F11E1");
             it.printf(b1_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Light");
 
             // Button 2
             int b2_pos_x = (it.get_width()/2) - 35;
             if (id(button2).state == "off") {
               it.circle(b2_pos_x, b_pos_y, 30, orange);
+              it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F1157");
             } else {
-              it.circle(b2_pos_x, b_pos_y, 30.5, orange);
-              it.filled_circle(b2_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b2_pos_x, b_pos_y, 30, silver);
+              it.circle(b2_pos_x, b_pos_y, 31, orange);
+              it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F1157");
             }
-            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F1157");
             it.printf(b2_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Potty");
 
             // Button 3
             int b3_pos_x = (it.get_width()/2) + 35;
             if (id(button3).state == "off") {
               it.circle(b3_pos_x, b_pos_y, 30, orange);
+              it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F09A1");
             } else {
-              it.circle(b3_pos_x, b_pos_y, 30.5, orange);
-              it.filled_circle(b3_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b3_pos_x, b_pos_y, 30, silver);
+              it.circle(b3_pos_x, b_pos_y, 31, orange);
+              it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F09A1");
             }
-            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F09A1");
             it.printf(b3_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Shower");
 
             // Button 4
             int b4_pos_x = (it.get_width()/2) + 105;
             if (id(button4).state == "off") {
               it.circle(b4_pos_x, b_pos_y, 30, orange);
+              it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F0FE1");
             } else {
-              it.circle(b4_pos_x, b_pos_y, 30.5, orange);
-              it.filled_circle(b4_pos_x, b_pos_y, 30, white);
+              it.filled_circle(b4_pos_x, b_pos_y, 30, silver);
+              it.circle(b4_pos_x, b_pos_y, 31, orange);
+              it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F0FE1");
             }
-            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F0FE1");
             it.printf(b4_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Motion");
 
             // Date Time
