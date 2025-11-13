@@ -51,8 +51,10 @@ font:
     glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F"]
           
 color:
+  # Azure Blue
   - id: ACTIVE
-    hex: "0088FF"  
+    hex: "0088FF"
+  # Cod Gray
   - id: INACTIVE
     hex: "111111"
 
@@ -398,53 +400,58 @@ display:
           };
 
             auto white = Color(255, 255, 255);
-            auto blue = Color(255, 122, 0);
-            auto green = Color(0, 200, 83);
+            auto blue = Color(255, 122, 0); # Blaze Orange - Inverted
+            auto green = Color(0, 255, 0);
             auto red = Color(255, 59, 48);
             auto yellow = Color(255, 240, 0);
-            auto orange = Color(255,170,0);
+            auto orange = Color(0, 170, 255) # Azure Blue - Inverted
+            auto silver = Color(185, 185, 185)
             
             int b_pos_y = 170;
 
             // Button 1
             int b1_pos_x = (it.get_width()/2) - 105;
             if (id(button1).state == "off") {
-              it.filled_circle(b1_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.circle(b1_pos_x, b_pos_y, 30, orange);
             } else {
+              it.circle(b1_pos_x, b_pos_y, 30, red);
               it.filled_circle(b1_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F11E1");
-            it.printf(b1_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Light");
+            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b1_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Light");
 
             // Button 2
             int b2_pos_x = (it.get_width()/2) - 35;
             if (id(button2).state == "off") {
               it.circle(b2_pos_x, b_pos_y, 30, orange);
             } else {
+              it.circle(b2_pos_x, b_pos_y, 30, red);
               it.filled_circle(b2_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F1157");
-            it.printf(b2_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Potty");
+            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F1157");
+            it.printf(b2_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Potty");
 
             // Button 3
             int b3_pos_x = (it.get_width()/2) + 35;
             if (id(button3).state == "off") {
-              it.filled_circle(b3_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.circle(b3_pos_x, b_pos_y, 30, orange);
             } else {
+              it.circle(b3_pos_x, b_pos_y, 30, red);
               it.filled_circle(b3_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons),id(ACTIVE), TextAlign::CENTER, "\U000F09A1");
-            it.printf(b3_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Shower");
+            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F09A1");
+            it.printf(b3_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Shower");
 
             // Button 4
             int b4_pos_x = (it.get_width()/2) + 105;
             if (id(button4).state == "off") {
-              it.filled_circle(b4_pos_x, b_pos_y, 30, id(INACTIVE));
+              it.circle(b4_pos_x, b_pos_y, 30, orange);
             } else {
+              it.circle(b4_pos_x, b_pos_y, 30, red);
               it.filled_circle(b4_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons),green, TextAlign::CENTER, "\U000F0FE1");
-            it.printf(b4_pos_x, b_pos_y + 45, id(label),id(Color::WHITE), TextAlign::CENTER, "Motion");
+            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F0FE1");
+            it.printf(b4_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Motion");
 
             // Date Time
             std::string day_of_week = day_map[id(ha_time).now().day_of_week];    
@@ -460,7 +467,7 @@ display:
 
             // Print date in format: Friday, October 10th
             it.printf(it.get_width()/2, it.get_height()/2 - 80, id(notice_text),
-                      id(Color::WHITE), TextAlign::CENTER,
+                      white, TextAlign::CENTER,
                       "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
 
             // Time (12-hour format with AM/PM)
@@ -469,5 +476,5 @@ display:
             if (hour == 0) hour = 12;
             const char *ampm = t.hour < 12 ? "AM" : "PM";
             it.printf(it.get_width()/2, it.get_height()/2 - 18, id(big_text),
-                      id(Color::WHITE), TextAlign::CENTER,
+                      white, TextAlign::CENTER,
                       "%d:%02d %s", hour, t.minute, ampm);
