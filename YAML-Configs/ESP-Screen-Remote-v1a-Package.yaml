@@ -416,12 +416,8 @@ display:
               it.circle(b1_pos_x, b_pos_y, 30, orange);
               it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F11E1");
             } else {
-              it.filled_circle(b1_pos_x, b_pos_y, 30, silver);
-              it.circle(b1_pos_x, b_pos_y, 30, green);
-              it.circle(b1_pos_x, b_pos_y, 30.5, green);
-              it.circle(b1_pos_x, b_pos_y, 31, green);
-              it.circle(b1_pos_x, b_pos_y, 31.5, green);
-              it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F11E1");
+              it.filled_circle(b1_pos_x, b_pos_y, 30, orange);
+              it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), black, TextAlign::CENTER, "\U000F11E1");
             }
             it.printf(b1_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Light");
 
@@ -431,12 +427,8 @@ display:
               it.circle(b2_pos_x, b_pos_y, 30, orange);
               it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F1157");
             } else {
-              it.filled_circle(b2_pos_x, b_pos_y, 30, silver);
-              it.circle(b2_pos_x, b_pos_y, 30, green);
-              it.circle(b2_pos_x, b_pos_y, 30.5, green);
-              it.circle(b2_pos_x, b_pos_y, 31, green);
-              it.circle(b2_pos_x, b_pos_y, 31.5, green);
-              it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F1157");
+              it.filled_circle(b2_pos_x, b_pos_y, 30, orange);
+              it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), black, TextAlign::CENTER, "\U000F1157");
             }
             it.printf(b2_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Potty");
 
@@ -446,12 +438,8 @@ display:
               it.circle(b3_pos_x, b_pos_y, 30, orange);
               it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F09A1");
             } else {
-              it.filled_circle(b3_pos_x, b_pos_y, 30, silver);
-              it.circle(b3_pos_x, b_pos_y, 30, green);
-              it.circle(b3_pos_x, b_pos_y, 30.5, green);
-              it.circle(b3_pos_x, b_pos_y, 31, green);
-              it.circle(b3_pos_x, b_pos_y, 31.5, green);
-              it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F09A1");
+              it.filled_circle(b3_pos_x, b_pos_y, 30, orange);
+              it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), black, TextAlign::CENTER, "\U000F09A1");
             }
             it.printf(b3_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Shower");
 
@@ -461,12 +449,8 @@ display:
               it.circle(b4_pos_x, b_pos_y, 30, orange);
               it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F0FE1");
             } else {
-              it.filled_circle(b4_pos_x, b_pos_y, 30, silver);
-              it.circle(b4_pos_x, b_pos_y, 30, green);
-              it.circle(b4_pos_x, b_pos_y, 30.5, green);
-              it.circle(b4_pos_x, b_pos_y, 31, green);
-              it.circle(b4_pos_x, b_pos_y, 31.5, green);
-              it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F0FE1");
+              it.filled_circle(b4_pos_x, b_pos_y, 30, orange);
+              it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), black, TextAlign::CENTER, "\U000F0FE1");
             }
             it.printf(b4_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Motion");
 
