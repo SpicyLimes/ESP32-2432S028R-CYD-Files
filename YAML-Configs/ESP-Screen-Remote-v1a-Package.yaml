@@ -414,10 +414,10 @@ display:
             if (id(button1).state == "off") {
               it.circle(b1_pos_x, b_pos_y, 30, orange);
             } else {
-              it.circle(b1_pos_x, b_pos_y, 30, red);
+              it.circle(b1_pos_x, b_pos_y, 30.5, orange);
               it.filled_circle(b1_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F11E1");
+            it.printf(b1_pos_x, b_pos_y, id(materialdesign_icons), yellow, TextAlign::CENTER, "\U000F11E1");
             it.printf(b1_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Light");
 
             // Button 2
@@ -425,10 +425,10 @@ display:
             if (id(button2).state == "off") {
               it.circle(b2_pos_x, b_pos_y, 30, orange);
             } else {
-              it.circle(b2_pos_x, b_pos_y, 30, red);
+              it.circle(b2_pos_x, b_pos_y, 30.5, orange);
               it.filled_circle(b2_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F1157");
+            it.printf(b2_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F1157");
             it.printf(b2_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Potty");
 
             // Button 3
@@ -436,10 +436,10 @@ display:
             if (id(button3).state == "off") {
               it.circle(b3_pos_x, b_pos_y, 30, orange);
             } else {
-              it.circle(b3_pos_x, b_pos_y, 30, red);
+              it.circle(b3_pos_x, b_pos_y, 30.5, orange);
               it.filled_circle(b3_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F09A1");
+            it.printf(b3_pos_x, b_pos_y, id(materialdesign_icons), silver, TextAlign::CENTER, "\U000F09A1");
             it.printf(b3_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Shower");
 
             // Button 4
@@ -447,10 +447,10 @@ display:
             if (id(button4).state == "off") {
               it.circle(b4_pos_x, b_pos_y, 30, orange);
             } else {
-              it.circle(b4_pos_x, b_pos_y, 30, red);
+              it.circle(b4_pos_x, b_pos_y, 30.5, orange);
               it.filled_circle(b4_pos_x, b_pos_y, 30, white);
             }
-            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), orange, TextAlign::CENTER, "\U000F0FE1");
+            it.printf(b4_pos_x, b_pos_y, id(materialdesign_icons), green, TextAlign::CENTER, "\U000F0FE1");
             it.printf(b4_pos_x, b_pos_y + 45, id(label), white, TextAlign::CENTER, "Motion");
 
             // Date Time
