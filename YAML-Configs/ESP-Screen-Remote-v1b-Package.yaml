@@ -39,9 +39,9 @@ font:
        'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü']
 
   # gfonts://family[@weight] - Bold version for weather bar
-  - file: "gfonts://Roboto@400"
+  - file: "gfonts://Roboto@500"
     id: climate
-    size: 14
+    size: 16
     bpp: 4
     glyphs:
       ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '/', '0',
@@ -446,20 +446,32 @@ display:
             int bar_height = 22;
             // it.filled_rectangle(0, 0, it.get_width(), bar_height, white);
             
-            // Format weather condition (capitalize first letter of each word, replace underscores)
+            // Format weather condition with proper spacing and capitalization
             std::string weather = id(weatherflow_forecast).state;
-            std::string formatted_weather = "";
-            bool capitalize_next = true;
-            for (char c : weather) {
-              if (c == '_') {
-                formatted_weather += ' ';
-                capitalize_next = true;
-              } else if (capitalize_next) {
-                formatted_weather += toupper(c);
-                capitalize_next = false;
-              } else {
-                formatted_weather += c;
-              }
+            std::string formatted_weather = weather;  // Default to raw value if not found
+            
+            // Weather condition mapping - all Home Assistant standard weather conditions
+            std::map<std::string, std::string> weather_map = {
+              {"clear-night", "Clear Night"},
+              {"cloudy", "Cloudy"},
+              {"exceptional", "Exceptional"},
+              {"fog", "Fog"},
+              {"hail", "Hail"},
+              {"lightning", "Lightning"},
+              {"lightning-rainy", "Lightning Rainy"},
+              {"partlycloudy", "Partly Cloudy"},
+              {"pouring", "Pouring"},
+              {"rainy", "Rainy"},
+              {"snowy", "Snowy"},
+              {"snowy-rainy", "Snowy Rainy"},
+              {"sunny", "Sunny"},
+              {"windy", "Windy"},
+              {"windy-variant", "Windy Cloudy"}
+            };
+            
+            // Look up the formatted version
+            if (weather_map.find(weather) != weather_map.end()) {
+              formatted_weather = weather_map[weather];
             }
             
             // Display weather condition (top left)
