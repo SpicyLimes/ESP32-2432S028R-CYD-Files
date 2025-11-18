@@ -72,9 +72,9 @@ color:
     hex: "111111"
 
 sensor:
-  - platform: wifi_signal
-    name: "WiFi Signal"
-    update_interval: 60s
+#  - platform: wifi_signal
+#    name: "WiFi Signal"
+#    update_interval: 60s
   - platform: uptime
     name: "Uptime"
     id: uptime_s
@@ -118,9 +118,9 @@ sensor:
 #              id: back_light
 #              state: on
 #              brightness: 20%
-  - platform: internal_temperature
-    name: "CPU Temperature"
-    update_interval: 30s
+#  - platform: internal_temperature
+#    name: "CPU Temperature"
+#    update_interval: 30s
 # [ Input Voltage Monitoring Config via Light Sensor ] #
 # Cannot use in conjunction with Light Sensor Monitoring
 #  - platform: adc
@@ -268,7 +268,7 @@ text_sensor:
 #    bssid:
 #      name: "WiFi BSSID"
   - platform: version
-    name: "Version"
+    name: "ESPHome Version"
   - platform: homeassistant
     id: button1
     entity_id: switch.bathroom_light
