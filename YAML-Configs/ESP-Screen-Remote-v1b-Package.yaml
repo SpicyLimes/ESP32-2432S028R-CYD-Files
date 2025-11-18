@@ -40,7 +40,7 @@ font:
 
   # gfonts://family[@weight] - Bold version for weather bar
   - file: "gfonts://Roboto@400"
-    id: label
+    id: climate
     size: 14
     bpp: 4
     glyphs:
@@ -531,7 +531,7 @@ display:
             else suffix = "th";
 
             // Print date in format: Friday, October 10th
-            it.printf(it.get_width()/2, it.get_height()/2 - 70, id(notice_text),
+            it.printf(it.get_width()/2, it.get_height()/2 - 65, id(notice_text),
                       white, TextAlign::CENTER,
                       "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
 
