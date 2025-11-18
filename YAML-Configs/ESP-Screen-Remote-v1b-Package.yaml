@@ -23,9 +23,9 @@ font:
        'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
        'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']     
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']
 
-  # gfonts://family[@weight] - Bold version for weather bar
+  # gfonts://family[@weight]
   - file: "gfonts://Roboto@700"
     id: label
     size: 13
@@ -36,7 +36,20 @@ font:
        'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
        'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü']            
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü']
+
+  # gfonts://family[@weight] - Bold version for weather bar
+  - file: "gfonts://Roboto@400"
+    id: label
+    size: 14
+    bpp: 4
+    glyphs:
+      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '/', '0',
+       '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+       'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
+       'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü']
 
   - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
     id: materialdesign_icons
@@ -450,14 +463,14 @@ display:
             }
             
             // Display weather condition (top left)
-            it.printf(5, bar_height/2, id(label), black, TextAlign::CENTER_LEFT, "%s", formatted_weather.c_str());
+            it.printf(5, bar_height/2, id(climate), black, TextAlign::CENTER_LEFT, "%s", formatted_weather.c_str());
             
             // Format temperature and humidity
             int temp = (int)round(id(weatherflow_temp).state);
             int humidity = (int)round(id(weatherflow_humidity).state);
             
             // Display temp/humidity (top right)
-            it.printf(it.get_width() - 5, bar_height/2, id(label), black, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
+            it.printf(it.get_width() - 5, bar_height/2, id(climate), black, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
             
             int b_pos_y = 170;
 
@@ -518,7 +531,7 @@ display:
             else suffix = "th";
 
             // Print date in format: Friday, October 10th
-            it.printf(it.get_width()/2, it.get_height()/2 - 50, id(notice_text),
+            it.printf(it.get_width()/2, it.get_height()/2 - 70, id(notice_text),
                       white, TextAlign::CENTER,
                       "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
 
