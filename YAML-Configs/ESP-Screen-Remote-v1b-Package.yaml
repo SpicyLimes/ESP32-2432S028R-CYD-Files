@@ -25,18 +25,18 @@ font:
        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
        'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']     
 
-  # gfonts://family[@weight]
-  - file: "gfonts://Roboto@400"
+  # gfonts://family[@weight] - Bold version for weather bar
+  - file: "gfonts://Roboto@700"
     id: label
     size: 13
     bpp: 4
     glyphs:
-      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
+      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '/', '0',
        '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
        'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
        'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']            
+       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü']            
 
   - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
     id: materialdesign_icons
@@ -70,10 +70,16 @@ sensor:
     id: weatherflow_temp
     entity_id: sensor.weatherflow_temperature
     internal: true
+    on_value:
+      then:
+        - component.update: my_display
   - platform: homeassistant
     id: weatherflow_humidity
     entity_id: sensor.weatherflow_humidity
     internal: true
+    on_value:
+      then:
+        - component.update: my_display
   - platform: adc
     name: "Light Sensor"
     pin: GPIO34
@@ -273,11 +279,14 @@ text_sensor:
     entity_id: automation.bathroom_motion_sensor_closet_light_modified
     on_value:
       then:
-        - component.update: my_display
+        - component.update: my_display        
   - platform: homeassistant
     id: weatherflow_forecast
     entity_id: weather.forecast_ftw_alliance
     internal: true
+    on_value:
+      then:
+        - component.update: my_display
 
 switch:
   - platform: restart
@@ -379,7 +388,7 @@ display:
       height: 240
       width: 320
 #    reset_pin: 16
-#    update_interval: never
+    update_interval: 180s  # Update every 3 minutes
 
     pages:      
       - id: lockscreen_page
@@ -419,6 +428,36 @@ display:
             auto orange = Color(0, 170, 255);
             auto silver = Color(100, 100, 100);
             auto black = Color(0, 0, 0);
+            
+            // Weather bar at top
+            int bar_height = 22;
+            it.filled_rectangle(0, 0, it.get_width(), bar_height, white);
+            
+            // Format weather condition (capitalize first letter of each word, replace underscores)
+            std::string weather = id(weatherflow_forecast).state;
+            std::string formatted_weather = "";
+            bool capitalize_next = true;
+            for (char c : weather) {
+              if (c == '_') {
+                formatted_weather += ' ';
+                capitalize_next = true;
+              } else if (capitalize_next) {
+                formatted_weather += toupper(c);
+                capitalize_next = false;
+              } else {
+                formatted_weather += c;
+              }
+            }
+            
+            // Display weather condition (top left)
+            it.printf(5, bar_height/2, id(label), black, TextAlign::CENTER_LEFT, "%s", formatted_weather.c_str());
+            
+            // Format temperature and humidity
+            int temp = (int)round(id(weatherflow_temp).state);
+            int humidity = (int)round(id(weatherflow_humidity).state);
+            
+            // Display temp/humidity (top right)
+            it.printf(it.get_width() - 5, bar_height/2, id(label), black, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
             
             int b_pos_y = 170;
 
