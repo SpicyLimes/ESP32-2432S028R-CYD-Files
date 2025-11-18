@@ -444,7 +444,7 @@ display:
             
             // Weather bar at top
             int bar_height = 22;
-            it.filled_rectangle(0, 0, it.get_width(), bar_height, white);
+            // it.filled_rectangle(0, 0, it.get_width(), bar_height, white);
             
             // Format weather condition (capitalize first letter of each word, replace underscores)
             std::string weather = id(weatherflow_forecast).state;
@@ -463,14 +463,14 @@ display:
             }
             
             // Display weather condition (top left)
-            it.printf(5, bar_height/2, id(climate), black, TextAlign::CENTER_LEFT, "%s", formatted_weather.c_str());
+            it.printf(5, bar_height/2, id(climate), yellow, TextAlign::CENTER_LEFT, "%s", formatted_weather.c_str());
             
             // Format temperature and humidity
             int temp = (int)round(id(weatherflow_temp).state);
             int humidity = (int)round(id(weatherflow_humidity).state);
             
             // Display temp/humidity (top right)
-            it.printf(it.get_width() - 5, bar_height/2, id(climate), black, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
+            it.printf(it.get_width() - 5, bar_height/2, id(climate), white, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
             
             int b_pos_y = 170;
 
@@ -531,7 +531,7 @@ display:
             else suffix = "th";
 
             // Print date in format: Friday, October 10th
-            it.printf(it.get_width()/2, it.get_height()/2 - 65, id(notice_text),
+            it.printf(it.get_width()/2, it.get_height()/2 - 72.5, id(notice_text),
                       white, TextAlign::CENTER,
                       "%s, %s %d%s", day_of_week.c_str(), month.c_str(), day_of_month, suffix.c_str());
 
