@@ -1,31 +1,5 @@
 font: 
   # gfonts://family[@weight]
-  - file: "gfonts://Roboto@500"
-    id: big_text
-    size: 72
-    bpp: 4
-    glyphs:
-      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
-       '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
-       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-       'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
-       'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']
-
-  # gfonts://family[@weight]
-  - file: "gfonts://Roboto@300"
-    id: notice_text
-    size: 26
-    bpp: 4
-    glyphs:
-      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '0',
-       '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
-       'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-       'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
-       'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-       'u', 'v', 'w', 'x', 'y', 'z','å', 'Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', '/']     
-
-  # gfonts://family[@weight]
   - file: "gfonts://Roboto@400"
     id: label
     size: 13
@@ -43,12 +17,6 @@ font:
     size: 35
     # Swap/Light-Night/Light/Fan/Air Freshener/Closet
     glyphs: ["\U000F0FE1", "\U000F1A4C", "\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F", "\U000F1157", "\U000F09A1", "\U000F013E", "\U000F013D"]
-
-  - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
-    id: materialdesign_icons_small
-    size: 20
-    # Light/Fan/Air Freshener/Closet
-    glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F"]
           
 color:
   - id: ACTIVE
@@ -67,26 +35,17 @@ color:
     hex: "FFFFFF"
 
 sensor:
-  - platform: wifi_signal
-    name: "WiFi Signal"
-    update_interval: 60s
   - platform: uptime
     name: "Uptime"
     id: uptime_s
-    update_interval: 45s
+    update_interval: 60s
   - platform: adc
     name: "Light Sensor"
     pin: GPIO34
     id: light_sensor
     update_interval: 10s
-  - platform: internal_temperature
-    name: "CPU Temperature"
-    update_interval: 30s
 
 binary_sensor:
-  - platform: status
-    name: "Node Status"
-    id: system_status
   - platform: status
     id: wifi_connected
     name: "Wifi Status"
@@ -264,7 +223,7 @@ text_sensor:
     ip_address:
       name: "IP Address"
   - platform: version
-    name: "Version"
+    name: "ESPHome Version"
   - platform: homeassistant
     id: button5
     entity_id: input_boolean.placeholder_toggle
@@ -421,7 +380,7 @@ display:
       width: 320
 
     pages:      
-      - id: lockscreen_page
+      - id: main_page
         lambda: |-
             auto white = Color(255, 255, 255);
             auto blue = Color(255, 122, 0);
