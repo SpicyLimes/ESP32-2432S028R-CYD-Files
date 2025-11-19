@@ -66,6 +66,18 @@ color:
   - id: WHITE
     hex: "FFFFFF"
 
+globals:
+  - id: display_update_pending
+    type: bool
+    initial_value: 'false'
+
+script:
+  - id: request_display_update
+    mode: restart
+    then:
+      - delay: 100ms
+      - component.update: my_display
+
 sensor:
   - platform: wifi_signal
     name: "WiFi Signal"
@@ -267,76 +279,76 @@ text_sensor:
     name: "Version"
   - platform: homeassistant
     id: button5
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button6
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button7
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button8
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display        
+        - script.execute: request_display_update        
   - platform: homeassistant
     id: button9
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button10
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button11
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button12
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button13
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button14
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button15
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button16
-    entity_id: input_boolean.placeholder_toggle
+    entity_id: switch.apartment_kasa_plug_2
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
 
 switch:
   - platform: restart
