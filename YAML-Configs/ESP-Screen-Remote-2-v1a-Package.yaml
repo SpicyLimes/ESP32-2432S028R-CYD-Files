@@ -115,65 +115,13 @@ binary_sensor:
       then:
         - light.toggle: back_light
         
-  # PAGE 1 BUTTONS (1-12)
-  - platform: touchscreen
-    name: Page 1 Button 1
-    x_min: 10
-    x_max: 70
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "1"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 1 Button 2
-    x_min: 90
-    x_max: 150
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "2"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 1 Button 3
-    x_min: 170
-    x_max: 230
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "3"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 1 Button 4
-    x_min: 10
-    x_max: 70
-    y_min: 90
-    y_max: 150
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "4"
-              device: "esphome-web-2c3858"
+  # PAGE 1 BUTTONS (5-16)
   - platform: touchscreen
     name: Page 1 Button 5
-    x_min: 90
-    x_max: 150
-    y_min: 90
-    y_max: 150
+    x_min: 10
+    x_max: 70
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -183,10 +131,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 6
-    x_min: 170
-    x_max: 230
-    y_min: 90
-    y_max: 150
+    x_min: 90
+    x_max: 150
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -196,10 +144,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 7
-    x_min: 10
-    x_max: 70
-    y_min: 170
-    y_max: 230
+    x_min: 170
+    x_max: 230
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -209,10 +157,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 8
-    x_min: 90
-    x_max: 150
-    y_min: 170
-    y_max: 230
+    x_min: 10
+    x_max: 70
+    y_min: 90
+    y_max: 150
     on_press:
       then:
         - homeassistant.event:
@@ -222,6 +170,58 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 9
+    x_min: 90
+    x_max: 150
+    y_min: 90
+    y_max: 150
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "9"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 1 Button 10
+    x_min: 170
+    x_max: 230
+    y_min: 90
+    y_max: 150
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "10"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 1 Button 11
+    x_min: 10
+    x_max: 70
+    y_min: 170
+    y_max: 230
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "11"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 1 Button 12
+    x_min: 90
+    x_max: 150
+    y_min: 170
+    y_max: 230
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "12"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 1 Button 13
     x_min: 170
     x_max: 230
     y_min: 170
@@ -231,7 +231,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "9"
+              button: "13"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Previous
@@ -244,7 +244,7 @@ binary_sensor:
         - display.page.show_previous: my_display
         - component.update: my_display
   - platform: touchscreen
-    name: Page 1 Button 11
+    name: Page 1 Button 15
     x_min: 90
     x_max: 150
     y_min: 250
@@ -254,7 +254,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "11"
+              button: "15"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Next
@@ -267,65 +267,13 @@ binary_sensor:
         - display.page.show_next: my_display
         - component.update: my_display
 
-  # PAGE 2 BUTTONS (13-24)
-  - platform: touchscreen
-    name: Page 2 Button 13
-    x_min: 10
-    x_max: 70
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "13"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 2 Button 14
-    x_min: 90
-    x_max: 150
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "14"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 2 Button 15
-    x_min: 170
-    x_max: 230
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "15"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 2 Button 16
-    x_min: 10
-    x_max: 70
-    y_min: 90
-    y_max: 150
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "16"
-              device: "esphome-web-2c3858"
+  # PAGE 2 BUTTONS (17-28)
   - platform: touchscreen
     name: Page 2 Button 17
-    x_min: 90
-    x_max: 150
-    y_min: 90
-    y_max: 150
+    x_min: 10
+    x_max: 70
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -335,10 +283,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 18
-    x_min: 170
-    x_max: 230
-    y_min: 90
-    y_max: 150
+    x_min: 90
+    x_max: 150
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -348,10 +296,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 19
-    x_min: 10
-    x_max: 70
-    y_min: 170
-    y_max: 230
+    x_min: 170
+    x_max: 230
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -361,10 +309,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 20
-    x_min: 90
-    x_max: 150
-    y_min: 170
-    y_max: 230
+    x_min: 10
+    x_max: 70
+    y_min: 90
+    y_max: 150
     on_press:
       then:
         - homeassistant.event:
@@ -374,6 +322,58 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 21
+    x_min: 90
+    x_max: 150
+    y_min: 90
+    y_max: 150
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "21"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 2 Button 22
+    x_min: 170
+    x_max: 230
+    y_min: 90
+    y_max: 150
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "22"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 2 Button 23
+    x_min: 10
+    x_max: 70
+    y_min: 170
+    y_max: 230
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "23"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 2 Button 24
+    x_min: 90
+    x_max: 150
+    y_min: 170
+    y_max: 230
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "24"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 2 Button 25
     x_min: 170
     x_max: 230
     y_min: 170
@@ -383,7 +383,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "21"
+              button: "25"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Previous
@@ -396,7 +396,7 @@ binary_sensor:
         - display.page.show_previous: my_display
         - component.update: my_display
   - platform: touchscreen
-    name: Page 2 Button 23
+    name: Page 2 Button 27
     x_min: 90
     x_max: 150
     y_min: 250
@@ -406,7 +406,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "23"
+              button: "27"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Next
@@ -419,65 +419,13 @@ binary_sensor:
         - display.page.show_next: my_display
         - component.update: my_display
 
-  # PAGE 3 BUTTONS (25-36)
-  - platform: touchscreen
-    name: Page 3 Button 25
-    x_min: 10
-    x_max: 70
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "25"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 3 Button 26
-    x_min: 90
-    x_max: 150
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "26"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 3 Button 27
-    x_min: 170
-    x_max: 230
-    y_min: 10
-    y_max: 70
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "27"
-              device: "esphome-web-2c3858"
-  - platform: touchscreen
-    name: Page 3 Button 28
-    x_min: 10
-    x_max: 70
-    y_min: 90
-    y_max: 150
-    on_press:
-      then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "28"
-              device: "esphome-web-2c3858"
+  # PAGE 3 BUTTONS (29-40)
   - platform: touchscreen
     name: Page 3 Button 29
-    x_min: 90
-    x_max: 150
-    y_min: 90
-    y_max: 150
+    x_min: 10
+    x_max: 70
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -487,10 +435,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 30
-    x_min: 170
-    x_max: 230
-    y_min: 90
-    y_max: 150
+    x_min: 90
+    x_max: 150
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -500,10 +448,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 31
-    x_min: 10
-    x_max: 70
-    y_min: 170
-    y_max: 230
+    x_min: 170
+    x_max: 230
+    y_min: 10
+    y_max: 70
     on_press:
       then:
         - homeassistant.event:
@@ -513,10 +461,10 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 32
-    x_min: 90
-    x_max: 150
-    y_min: 170
-    y_max: 230
+    x_min: 10
+    x_max: 70
+    y_min: 90
+    y_max: 150
     on_press:
       then:
         - homeassistant.event:
@@ -526,6 +474,58 @@ binary_sensor:
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 33
+    x_min: 90
+    x_max: 150
+    y_min: 90
+    y_max: 150
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "33"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 3 Button 34
+    x_min: 170
+    x_max: 230
+    y_min: 90
+    y_max: 150
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "34"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 3 Button 35
+    x_min: 10
+    x_max: 70
+    y_min: 170
+    y_max: 230
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "35"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 3 Button 36
+    x_min: 90
+    x_max: 150
+    y_min: 170
+    y_max: 230
+    on_press:
+      then:
+        - homeassistant.event:
+            event: esphome.button_pressed
+            data:
+              button: "36"
+              device: "esphome-web-2c3858"
+  - platform: touchscreen
+    name: Page 3 Button 37
     x_min: 170
     x_max: 230
     y_min: 170
@@ -535,7 +535,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "33"
+              button: "37"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Previous
@@ -548,7 +548,7 @@ binary_sensor:
         - display.page.show_previous: my_display
         - component.update: my_display
   - platform: touchscreen
-    name: Page 3 Button 35
+    name: Page 3 Button 39
     x_min: 90
     x_max: 150
     y_min: 250
@@ -558,7 +558,7 @@ binary_sensor:
         - homeassistant.event:
             event: esphome.button_pressed
             data:
-              button: "35"
+              button: "39"
               device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Next
@@ -578,31 +578,7 @@ text_sensor:
   - platform: version
     name: "Version"
     
-  # PAGE 1 TEXT SENSORS (buttons 1-9, 11)
-  - platform: homeassistant
-    id: button1
-    entity_id: light.bathroom_lights_switch
-    on_value:
-      then:
-        - script.execute: request_display_update
-  - platform: homeassistant
-    id: button2
-    entity_id: light.bathroom_lights_switch
-    on_value:
-      then:
-        - script.execute: request_display_update
-  - platform: homeassistant
-    id: button3
-    entity_id: light.bathroom_lights_switch
-    on_value:
-      then:
-        - script.execute: request_display_update
-  - platform: homeassistant
-    id: button4
-    entity_id: light.bathroom_lights_switch
-    on_value:
-      then:
-        - script.execute: request_display_update        
+  # PAGE 1 TEXT SENSORS (buttons 5-13, 15)
   - platform: homeassistant
     id: button5
     entity_id: light.bathroom_lights_switch
@@ -626,9 +602,15 @@ text_sensor:
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - script.execute: request_display_update
+        - script.execute: request_display_update        
   - platform: homeassistant
     id: button9
+    entity_id: light.bathroom_lights_switch
+    on_value:
+      then:
+        - script.execute: request_display_update
+  - platform: homeassistant
+    id: button10
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
@@ -639,16 +621,14 @@ text_sensor:
     on_value:
       then:
         - script.execute: request_display_update
-        
-  # PAGE 2 TEXT SENSORS (buttons 13-21, 23)
   - platform: homeassistant
-    id: button13
+    id: button12
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
-    id: button14
+    id: button13
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
@@ -659,12 +639,8 @@ text_sensor:
     on_value:
       then:
         - script.execute: request_display_update
-  - platform: homeassistant
-    id: button16
-    entity_id: light.bathroom_lights_switch
-    on_value:
-      then:
-        - script.execute: request_display_update
+        
+  # PAGE 2 TEXT SENSORS (buttons 17-25, 27)
   - platform: homeassistant
     id: button17
     entity_id: light.bathroom_lights_switch
@@ -696,21 +672,25 @@ text_sensor:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
+    id: button22
+    entity_id: light.bathroom_lights_switch
+    on_value:
+      then:
+        - script.execute: request_display_update
+  - platform: homeassistant
     id: button23
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
         - script.execute: request_display_update
-        
-  # PAGE 3 TEXT SENSORS (buttons 25-33, 35)
   - platform: homeassistant
-    id: button25
+    id: button24
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
-    id: button26
+    id: button25
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
@@ -721,12 +701,8 @@ text_sensor:
     on_value:
       then:
         - script.execute: request_display_update
-  - platform: homeassistant
-    id: button28
-    entity_id: light.bathroom_lights_switch
-    on_value:
-      then:
-        - script.execute: request_display_update
+        
+  # PAGE 3 TEXT SENSORS (buttons 29-37, 39)
   - platform: homeassistant
     id: button29
     entity_id: light.bathroom_lights_switch
@@ -758,7 +734,31 @@ text_sensor:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
+    id: button34
+    entity_id: light.bathroom_lights_switch
+    on_value:
+      then:
+        - script.execute: request_display_update
+  - platform: homeassistant
     id: button35
+    entity_id: light.bathroom_lights_switch
+    on_value:
+      then:
+        - script.execute: request_display_update
+  - platform: homeassistant
+    id: button36
+    entity_id: light.bathroom_lights_switch
+    on_value:
+      then:
+        - script.execute: request_display_update
+  - platform: homeassistant
+    id: button37
+    entity_id: light.bathroom_lights_switch
+    on_value:
+      then:
+        - script.execute: request_display_update
+  - platform: homeassistant
+    id: button39
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
@@ -865,8 +865,8 @@ display:
             int row3_y = 200;
             int row4_y = 280;
 
-            // Button 1
-            if (id(button1).state == "off") {
+            // Button 5
+            if (id(button5).state == "off") {
               it.rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -877,8 +877,8 @@ display:
               it.printf(col1_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 2
-            if (id(button2).state == "off") {
+            // Button 6
+            if (id(button6).state == "off") {
               it.rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -889,8 +889,8 @@ display:
               it.printf(col2_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 3
-            if (id(button3).state == "off") {
+            // Button 7
+            if (id(button7).state == "off") {
               it.rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -901,8 +901,8 @@ display:
               it.printf(col3_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 4
-            if (id(button4).state == "off") {
+            // Button 8
+            if (id(button8).state == "off") {
               it.rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -913,8 +913,8 @@ display:
               it.printf(col1_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 5
-            if (id(button5).state == "off") {
+            // Button 9
+            if (id(button9).state == "off") {
               it.rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -925,8 +925,8 @@ display:
               it.printf(col2_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 6
-            if (id(button6).state == "off") {
+            // Button 10
+            if (id(button10).state == "off") {
               it.rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -937,8 +937,8 @@ display:
               it.printf(col3_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 7
-            if (id(button7).state == "off") {
+            // Button 11
+            if (id(button11).state == "off") {
               it.rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -949,8 +949,8 @@ display:
               it.printf(col1_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 8
-            if (id(button8).state == "off") {
+            // Button 12
+            if (id(button12).state == "off") {
               it.rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -961,8 +961,8 @@ display:
               it.printf(col2_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 9
-            if (id(button9).state == "off") {
+            // Button 13
+            if (id(button13).state == "off") {
               it.rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -973,12 +973,12 @@ display:
               it.printf(col3_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 10 - Previous Page (Chevron Left)
+            // Button (Navigation) Previous Page
             it.rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
             it.printf(col1_x, row4_y, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F0141");
 
-            // Button 11
-            if (id(button11).state == "off") {
+            // Button 15
+            if (id(button15).state == "off") {
               it.rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row4_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row4_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -989,7 +989,7 @@ display:
               it.printf(col2_x, row4_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 12 - Next Page (Chevron Right)
+            // Button (Navigation) Next Page
             it.rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
             it.printf(col3_x, row4_y, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F0142");
 
@@ -1012,8 +1012,8 @@ display:
             int row3_y = 200;
             int row4_y = 280;
 
-            // Button 13
-            if (id(button13).state == "off") {
+            // Button 17
+            if (id(button17).state == "off") {
               it.rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1024,8 +1024,8 @@ display:
               it.printf(col1_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 14
-            if (id(button14).state == "off") {
+            // Button 18
+            if (id(button18).state == "off") {
               it.rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1036,8 +1036,8 @@ display:
               it.printf(col2_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 15
-            if (id(button15).state == "off") {
+            // Button 19
+            if (id(button19).state == "off") {
               it.rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1048,8 +1048,8 @@ display:
               it.printf(col3_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 16
-            if (id(button16).state == "off") {
+            // Button 20
+            if (id(button20).state == "off") {
               it.rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1060,8 +1060,8 @@ display:
               it.printf(col1_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 17
-            if (id(button17).state == "off") {
+            // Button 21
+            if (id(button21).state == "off") {
               it.rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1072,8 +1072,8 @@ display:
               it.printf(col2_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 18
-            if (id(button18).state == "off") {
+            // Button 22
+            if (id(button22).state == "off") {
               it.rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1084,8 +1084,8 @@ display:
               it.printf(col3_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 19
-            if (id(button19).state == "off") {
+            // Button 23
+            if (id(button23).state == "off") {
               it.rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1096,8 +1096,8 @@ display:
               it.printf(col1_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 20
-            if (id(button20).state == "off") {
+            // Button 24
+            if (id(button24).state == "off") {
               it.rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1108,8 +1108,8 @@ display:
               it.printf(col2_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 21
-            if (id(button21).state == "off") {
+            // Button 25
+            if (id(button25).state == "off") {
               it.rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1120,12 +1120,12 @@ display:
               it.printf(col3_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 22 - Previous Page (Chevron Left)
+            // Button (Navigation) Previous Page
             it.rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
             it.printf(col1_x, row4_y, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F0141");
 
-            // Button 23
-            if (id(button23).state == "off") {
+            // Button 27
+            if (id(button27).state == "off") {
               it.rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row4_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row4_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1136,7 +1136,7 @@ display:
               it.printf(col2_x, row4_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 24 - Next Page (Chevron Right)
+            // Button (Navigation) Next Page
             it.rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
             it.printf(col3_x, row4_y, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F0142");
 
@@ -1159,8 +1159,8 @@ display:
             int row3_y = 200;
             int row4_y = 280;
 
-            // Button 25
-            if (id(button25).state == "off") {
+            // Button 29
+            if (id(button29).state == "off") {
               it.rectangle(col1_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1171,8 +1171,8 @@ display:
               it.printf(col1_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 26
-            if (id(button26).state == "off") {
+            // Button 30
+            if (id(button30).state == "off") {
               it.rectangle(col2_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1183,8 +1183,8 @@ display:
               it.printf(col2_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 27
-            if (id(button27).state == "off") {
+            // Button 31
+            if (id(button31).state == "off") {
               it.rectangle(col3_x - btn_half, row1_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row1_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row1_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1195,8 +1195,8 @@ display:
               it.printf(col3_x, row1_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 28
-            if (id(button28).state == "off") {
+            // Button 32
+            if (id(button32).state == "off") {
               it.rectangle(col1_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1207,8 +1207,8 @@ display:
               it.printf(col1_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 29
-            if (id(button29).state == "off") {
+            // Button 33
+            if (id(button33).state == "off") {
               it.rectangle(col2_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1219,8 +1219,8 @@ display:
               it.printf(col2_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 30
-            if (id(button30).state == "off") {
+            // Button 34
+            if (id(button34).state == "off") {
               it.rectangle(col3_x - btn_half, row2_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row2_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row2_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1231,8 +1231,8 @@ display:
               it.printf(col3_x, row2_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 31
-            if (id(button31).state == "off") {
+            // Button 35
+            if (id(button35).state == "off") {
               it.rectangle(col1_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col1_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col1_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1243,8 +1243,8 @@ display:
               it.printf(col1_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 32
-            if (id(button32).state == "off") {
+            // Button 36
+            if (id(button36).state == "off") {
               it.rectangle(col2_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1255,8 +1255,8 @@ display:
               it.printf(col2_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 33
-            if (id(button33).state == "off") {
+            // Button 37
+            if (id(button37).state == "off") {
               it.rectangle(col3_x - btn_half, row3_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col3_x, row3_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col3_x, row3_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1267,12 +1267,12 @@ display:
               it.printf(col3_x, row3_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 34 - Previous Page (Chevron Left)
+            // Button (Navigation) Previous Page
             it.rectangle(col1_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
             it.printf(col1_x, row4_y, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F0141");
 
-            // Button 35
-            if (id(button35).state == "off") {
+            // Button 39
+            if (id(button39).state == "off") {
               it.rectangle(col2_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
               it.printf(col2_x, row4_y - 10, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F11E1");
               it.printf(col2_x, row4_y + 12, id(label), id(SILVER), TextAlign::CENTER, "Light");
@@ -1283,6 +1283,6 @@ display:
               it.printf(col2_x, row4_y + 12, id(label), id(BLACK), TextAlign::CENTER, "Light");
             }
 
-            // Button 36 - Next Page (Chevron Right)
+            // Button (Navigation) Next Page
             it.rectangle(col3_x - btn_half, row4_y - btn_half, btn_size, btn_size, id(SILVER));
             it.printf(col3_x, row4_y, id(materialdesign_icons), id(SILVER), TextAlign::CENTER, "\U000F0142");
