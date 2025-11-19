@@ -97,7 +97,7 @@ sensor:
     name: "Light Sensor"
     pin: GPIO34
     id: light_sensor
-    update_interval: 10s
+    update_interval: 60s
 #    on_value_range:
 #      - below: 0.1
 #        then:
