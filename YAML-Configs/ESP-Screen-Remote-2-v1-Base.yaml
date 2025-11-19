@@ -1,6 +1,6 @@
 esphome:
   name: esphome-web-2c3858
-  friendly_name: ESPHome Macro Controls
+  friendly_name: ESPHome Macro Touchpad
   min_version: 2025.9.0
   name_add_mac_suffix: false
 
@@ -47,6 +47,6 @@ web_server:
 packages:
   remote_package_files:
     url: https://github.com/SpicyLimes/ESP32-2432S028R-CYD-Files
-    files: YAML-Configs/ESP-Screen-Remote-2-v1-Package.yaml
+    files: YAML-Configs/ESP-Screen-Remote-2-v1a-Package.yaml
     ref: main
-    refresh: 5min
+    refresh: 0s
