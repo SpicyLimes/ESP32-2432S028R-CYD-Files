@@ -581,61 +581,61 @@ text_sensor:
 # PAGE 1 TEXT SENSORS (buttons 5-13, 15)
   - platform: homeassistant
     id: button5
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button6
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button7
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button8
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update        
   - platform: homeassistant
     id: button9
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button10
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button11
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button12
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button13
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button15
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
@@ -643,61 +643,61 @@ text_sensor:
   # PAGE 2 TEXT SENSORS (buttons 17-25, 27)
   - platform: homeassistant
     id: button17
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button18
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button19
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button20
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button21
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button22
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button23
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button24
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button25
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button27
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
@@ -705,61 +705,61 @@ text_sensor:
   # PAGE 3 TEXT SENSORS (buttons 29-37, 39)
   - platform: homeassistant
     id: button29
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button30
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button31
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button32
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button33
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button34
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button35
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button36
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button37
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
   - platform: homeassistant
     id: button39
-    entity_id: light.bathroom_lights_switch
+    entity_id: input_boolean.placeholder_toggle
     on_value:
       then:
         - script.execute: request_display_update
