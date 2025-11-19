@@ -66,6 +66,18 @@ color:
   - id: WHITE
     hex: "FFFFFF"
 
+globals:
+  - id: display_update_pending
+    type: bool
+    initial_value: 'false'
+
+script:
+  - id: request_display_update
+    mode: restart
+    then:
+      - delay: 100ms
+      - component.update: my_display
+
 sensor:
   - platform: wifi_signal
     name: "WiFi Signal"
@@ -572,61 +584,61 @@ text_sensor:
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button2
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button3
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button4
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display        
+        - script.execute: request_display_update        
   - platform: homeassistant
     id: button5
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button6
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button7
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button8
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button9
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button11
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
         
   # PAGE 2 TEXT SENSORS (buttons 13-21, 23)
   - platform: homeassistant
@@ -634,61 +646,61 @@ text_sensor:
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button14
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button15
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button16
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button17
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button18
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button19
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button20
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button21
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button23
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
         
   # PAGE 3 TEXT SENSORS (buttons 25-33, 35)
   - platform: homeassistant
@@ -696,61 +708,61 @@ text_sensor:
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button26
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button27
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button28
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button29
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button30
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button31
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button32
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button33
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
   - platform: homeassistant
     id: button35
     entity_id: light.bathroom_lights_switch
     on_value:
       then:
-        - component.update: my_display
+        - script.execute: request_display_update
 
 switch:
   - platform: restart
