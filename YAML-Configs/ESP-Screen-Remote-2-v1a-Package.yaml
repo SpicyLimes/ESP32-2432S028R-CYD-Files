@@ -70,6 +70,9 @@ globals:
   - id: display_update_pending
     type: bool
     initial_value: 'false'
+  - id: current_page
+    type: int
+    initial_value: '1'
 
 script:
   - id: request_display_update
@@ -115,7 +118,7 @@ binary_sensor:
       then:
         - light.toggle: back_light
         
-# PAGE 1 BUTTONS (5-16)
+  # PAGE 1 BUTTONS (5-16)
   - platform: touchscreen
     name: Page 1 Button 5
     x_min: 10
@@ -124,11 +127,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "5"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "5"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 6
     x_min: 90
@@ -137,11 +144,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "6"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "6"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 7
     x_min: 170
@@ -150,11 +161,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "7"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "7"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 8
     x_min: 10
@@ -163,11 +178,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "8"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "8"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 9
     x_min: 90
@@ -176,11 +195,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "9"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "9"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 10
     x_min: 170
@@ -189,11 +212,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "10"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "10"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 11
     x_min: 10
@@ -202,11 +229,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "11"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "11"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 12
     x_min: 90
@@ -215,11 +246,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "12"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "12"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Button 13
     x_min: 170
@@ -228,11 +263,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "13"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "13"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Previous
     x_min: 10
@@ -241,6 +280,9 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
+        - globals.set:
+            id: current_page
+            value: '3'
         - display.page.show_previous: my_display
         - component.update: my_display
   - platform: touchscreen
@@ -251,11 +293,15 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "15"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 1;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "15"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 1 Next
     x_min: 170
@@ -264,10 +310,13 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
+        - globals.set:
+            id: current_page
+            value: '2'
         - display.page.show_next: my_display
         - component.update: my_display
 
-# PAGE 2 BUTTONS (17-28)
+  # PAGE 2 BUTTONS (17-28)
   - platform: touchscreen
     name: Page 2 Button 17
     x_min: 10
@@ -276,11 +325,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "17"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "17"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 18
     x_min: 90
@@ -289,11 +342,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "18"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "18"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 19
     x_min: 170
@@ -302,11 +359,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "19"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "19"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 20
     x_min: 10
@@ -315,11 +376,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "20"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "20"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 21
     x_min: 90
@@ -328,11 +393,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "21"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "21"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 22
     x_min: 170
@@ -341,11 +410,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "22"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "22"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 23
     x_min: 10
@@ -354,11 +427,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "23"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "23"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 24
     x_min: 90
@@ -367,11 +444,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "24"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "24"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Button 25
     x_min: 170
@@ -380,11 +461,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "25"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "25"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Previous
     x_min: 10
@@ -393,6 +478,9 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
+        - globals.set:
+            id: current_page
+            value: '1'
         - display.page.show_previous: my_display
         - component.update: my_display
   - platform: touchscreen
@@ -403,11 +491,15 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "27"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 2;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "27"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 2 Next
     x_min: 170
@@ -416,10 +508,13 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
+        - globals.set:
+            id: current_page
+            value: '3'
         - display.page.show_next: my_display
         - component.update: my_display
 
-# PAGE 3 BUTTONS (29-40)
+  # PAGE 3 BUTTONS (29-40)
   - platform: touchscreen
     name: Page 3 Button 29
     x_min: 10
@@ -428,11 +523,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "29"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "29"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 30
     x_min: 90
@@ -441,11 +540,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "30"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "30"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 31
     x_min: 170
@@ -454,11 +557,15 @@ binary_sensor:
     y_max: 70
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "31"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "31"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 32
     x_min: 10
@@ -467,11 +574,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "32"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "32"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 33
     x_min: 90
@@ -480,11 +591,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "33"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "33"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 34
     x_min: 170
@@ -493,11 +608,15 @@ binary_sensor:
     y_max: 150
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "34"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "34"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 35
     x_min: 10
@@ -506,11 +625,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "35"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "35"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 36
     x_min: 90
@@ -519,11 +642,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "36"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "36"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Button 37
     x_min: 170
@@ -532,11 +659,15 @@ binary_sensor:
     y_max: 230
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "37"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "37"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Previous
     x_min: 10
@@ -545,6 +676,9 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
+        - globals.set:
+            id: current_page
+            value: '2'
         - display.page.show_previous: my_display
         - component.update: my_display
   - platform: touchscreen
@@ -555,11 +689,15 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
-        - homeassistant.event:
-            event: esphome.button_pressed
-            data:
-              button: "39"
-              device: "esphome-web-2c3858"
+        - if:
+            condition:
+              lambda: 'return id(current_page) == 3;'
+            then:
+              - homeassistant.event:
+                  event: esphome.button_pressed
+                  data:
+                    button: "39"
+                    device: "esphome-web-2c3858"
   - platform: touchscreen
     name: Page 3 Next
     x_min: 170
@@ -568,6 +706,9 @@ binary_sensor:
     y_max: 310
     on_press:
       then:
+        - globals.set:
+            id: current_page
+            value: '1'
         - display.page.show_next: my_display
         - component.update: my_display
 
