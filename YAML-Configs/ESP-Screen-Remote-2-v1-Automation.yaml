@@ -1,0 +1,94 @@
+alias: ESP32 Macro Controls
+description: ""
+triggers:
+  - event_type: esphome.button_pressed
+    trigger: event
+conditions: []
+actions:
+  - variables:
+      button: "{{ trigger.event.data['button'] | trim | string }}"
+      device: "{{ trigger.event.data['device'] | trim | string }}"
+      device_id: "{{ trigger.event.data['device_id'] | trim | string }}"
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '5' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '6' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '7' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '8' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '9' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '10' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '11' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '12' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+      - conditions:
+          - condition: template
+            value_template: "{{ button == '13' }}"
+        sequence:
+          - action: switch.toggle
+            metadata: {}
+            data: {}
+            target:
+              entity_id: switch.apartment_kasa_plug_2
+mode: single
