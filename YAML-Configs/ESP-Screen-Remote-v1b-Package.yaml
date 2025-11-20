@@ -444,6 +444,7 @@ display:
             auto blue = Color(255, 122, 0);
             auto green = Color(0, 155, 0);
             auto red = Color(255, 59, 48);
+            auto darkred = Color(150, 10, 0);
             auto yellow = Color(0, 240, 255);
             auto orange = Color(0, 170, 255);
             auto silver = Color(100, 100, 100);
@@ -502,7 +503,7 @@ display:
               auto yellow = Color(0, 240, 255);
             
               // Center of screen, same vertical alignment as other top-bar items
-              it.printf(it.get_width() / 2, bar_height / 2, id(climate), yellow, TextAlign::CENTER, "%s", waze_buf);
+              it.printf(it.get_width() / 2, bar_height / 2, id(climate), darkred, TextAlign::CENTER, "%s", waze_buf);
             }
 
             int b_pos_y = 170;
