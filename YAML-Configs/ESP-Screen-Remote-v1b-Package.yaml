@@ -443,8 +443,8 @@ display:
             auto white = Color(255, 255, 255);
             auto blue = Color(255, 122, 0);
             auto green = Color(0, 155, 0);
-            auto red = Color(255, 59, 48);
-            auto darkred = Color(150, 10, 0);
+            auto red = Color(50, 60, 255);
+            auto darkred = Color(0, 10, 150);
             auto yellow = Color(0, 240, 255);
             auto orange = Color(0, 170, 255);
             auto silver = Color(100, 100, 100);
