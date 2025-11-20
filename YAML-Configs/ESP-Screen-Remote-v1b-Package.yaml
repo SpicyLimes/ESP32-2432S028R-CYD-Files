@@ -499,7 +499,7 @@ display:
               auto yellow = Color(0, 240, 255);
             
               // Icon + value
-              it.printf(it.get_width() / 2, bar_height / 2, id(climate), yellow, TextAlign::CENTER, "\U000F07AB %.0f min", waze_val);
+              it.printf(it.get_width() / 2, bar_height / 2, id(climate), darkred, TextAlign::CENTER, "%.0f Mins", waze_val);
             }
 
             int b_pos_y = 170;
