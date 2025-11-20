@@ -59,9 +59,9 @@ font:
 
   - file: 'https://www.spicylimes.com/_fonts/materialdesignicons-webfont.ttf'
     id: materialdesign_icons_small
-    size: 20
+    size: 16
     # Light/Fan/Air Freshener/Closet
-    glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F"]
+    glyphs: ["\U000F11E1", "\U000F0210", "\U000F1958", "\U000F02C8", "\U000F07D0", "\U000F10D3", "\U000F0928", "\U000F092F", "\U000F07AB"]
           
 color:
   # Azure Blue
@@ -498,7 +498,7 @@ display:
             // Only print if the sensor has a valid numeric state
             if (!isnan(waze_val)) {
               char waze_buf[16];
-              sprintf(waze_buf, "%.0f min", waze_val);
+              sprintf(waze_buf, "\U000F07AB  %.0f Mins", waze_val);
             
               auto yellow = Color(0, 240, 255);
             
