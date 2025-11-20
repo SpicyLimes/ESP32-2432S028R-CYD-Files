@@ -495,15 +495,11 @@ display:
             // Waze travel time (center top)
             float waze_val = id(waze_time).state;
             
-            // Only print if the sensor has a valid numeric state
             if (!isnan(waze_val)) {
-              char waze_buf[16];
-              sprintf(waze_buf, "\U000F07AB  %.0f Mins", waze_val);
-            
               auto yellow = Color(0, 240, 255);
             
-              // Center of screen, same vertical alignment as other top-bar items
-              it.printf(it.get_width() / 2, bar_height / 2, id(climate), darkred, TextAlign::CENTER, "%s", waze_buf);
+              // Icon + value
+              it.printf(it.get_width() / 2, bar_height / 2, id(climate), yellow, TextAlign::CENTER, "\U000F07AB %.0f min", waze_val);
             }
 
             int b_pos_y = 170;
