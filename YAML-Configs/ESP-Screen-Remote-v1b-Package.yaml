@@ -81,14 +81,14 @@ sensor:
     update_interval: 45s
   - platform: homeassistant
     id: weatherflow_temp
-    entity_id: sensor.weatherflow_temperature
+    entity_id: sensor.ftw_alliance_sensors_temperature
     internal: true
     on_value:
       then:
         - component.update: my_display
   - platform: homeassistant
     id: weatherflow_humidity
-    entity_id: sensor.weatherflow_humidity
+    entity_id: sensor.ftw_alliance_sensors_humidity
     internal: true
     on_value:
       then:
