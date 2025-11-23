@@ -1,0 +1,224 @@
+# MDI Icon Reference
+lightbulb: "\U000F0335"
+lightbulb-on: "\U000F06E8"
+lightbulb-outline: "\U000F0336"
+lightbulb-group: "\U000F1253"
+lamp: "\U000F06B5"
+ceiling-light: "\U000F0769"
+floor-lamp: "\U000F08DD"
+led-strip: "\U000F1051"
+led-strip-variant: "\U000F1052"
+brightness-6: "\U000F0C7E"
+brightness-7: "\U000F0C7F"
+power: "\U000F0425"
+power-plug: "\U000F06A5"
+power-socket: "\U000F0E95"
+toggle-switch: "\U000F0521"
+toggle-switch-off: "\U000F0A19"
+dip-switch: "\U000F07C6"
+light-switch: "\U000F097E"
+switch: "\U000F06C8"
+fan: "\U000F0322"
+ceiling-fan: "\U000F1797"
+air-conditioner: "\U000F0A02"
+thermostat: "\U000F0393"
+snowflake: "\U000F0717"
+fire: "\U000F0238"
+radiator: "\U000F046A"
+play: "\U000F040A"
+pause: "\U000F03E4"
+stop: "\U000F04DB"
+speaker: "\U000F04C3"
+television: "\U000F0502"
+music: "\U000F075A"
+volume-high: "\U000F057E"
+volume-low: "\U000F057F"
+volume-off: "\U000F0581"
+cast: "\U000F0118"
+door: "\U000F081A"
+door-open: "\U000F081B"
+door-closed: "\U000F081C"
+garage: "\U000F06D9"
+garage-open: "\U000F06DA"
+window-closed: "\U000F05AE"
+window-open: "\U000F05AF"
+blinds: "\U000F0A47"
+curtains: "\U000F1846"
+lock: "\U000F033E"
+lock-open: "\U000F033F"
+shield: "\U000F0498"
+shield-check: "\U000F0565"
+alarm-light: "\U000F0787"
+cctv: "\U000F07AE"
+doorbell: "\U000F0869"
+motion-sensor: "\U000F0D91"
+printer-3d: "\U000F0E5B"
+monitor: "\U000F0379"
+laptop: "\U000F0322"
+tablet: "\U000F04F8"
+cellphone: "\U000F011C"
+router-wireless: "\U000F0469"
+server: "\U000F048B"
+home: "\U000F02DC"
+home-outline: "\U000F06A1"
+home-assistant: "\U000F07D0"
+sofa: "\U000F04C9"
+bed: "\U000F0F53"
+shower: "\U000F09A0"
+toilet: "\U000F09AB"
+stove: "\U000F102E"
+fridge: "\U000F0290"
+washing-machine: "\U000F072E"
+weather-sunny: "\U000F0599"
+weather-night: "\U000F0594"
+weather-cloudy: "\U000F0590"
+weather-rainy: "\U000F0597"
+weather-snowy: "\U000F0F36"
+umbrella: "\U000F0552"
+chevron-left: "\U000F0141"
+chevron-right: "\U000F0142"
+chevron-up: "\U000F0143"
+chevron-down: "\U000F0140"
+menu: "\U000F035C"
+dots-vertical: "\U000F01D9"
+dots-horizontal: "\U000F01D8"
+plus: "\U000F0415"
+minus: "\U000F0374"
+close: "\U000F0156"
+check: "\U000F012C"
+cog: "\U000F0493"
+check-circle: "\U000F05E0"
+close-circle: "\U000F0159"
+alert: "\U000F0026"
+alert-circle: "\U000F0028"
+information: "\U000F02FC"
+wifi: "\U000F05A9"
+wifi-strength-1: "\U000F091F"
+wifi-strength-2: "\U000F0922"
+wifi-strength-3: "\U000F0925"
+wifi-strength-4: "\U000F0928"
+battery: "\U000F0079"
+battery-charging: "\U000F0084"
+car: "\U000F010B"
+garage-variant: "\U000F12D4"
+car-door: "\U000F0B6B"
+car-light-high: "\U000F0C5C"
+sprinkler: "\U000F1009"
+water-pump: "\U000F0D98"
+tree: "\U000F0531"
+flower: "\U000F09D0"
+grass: "\U000F1510"
+icon_glyphs:
+  - "\U000F0335"  # lightbulb
+  - "\U000F06E8"  # lightbulb-on
+  - "\U000F0336"  # lightbulb-outline
+  - "\U000F1253"  # lightbulb-group
+  - "\U000F06B5"  # lamp
+  - "\U000F0769"  # ceiling-light
+  - "\U000F08DD"  # floor-lamp
+  - "\U000F1051"  # led-strip
+  - "\U000F1052"  # led-strip-variant
+  - "\U000F097E"  # light-switch
+  - "\U000F0C7E"  # brightness-6
+  - "\U000F0C7F"  # brightness-7
+  - "\U000F0425"  # power
+  - "\U000F06A5"  # power-plug
+  - "\U000F0E95"  # power-socket
+  - "\U000F0521"  # toggle-switch
+  - "\U000F0A19"  # toggle-switch-off
+  - "\U000F07C6"  # dip-switch
+  - "\U000F06C8"  # switch
+  - "\U000F0322"  # fan
+  - "\U000F1797"  # ceiling-fan
+  - "\U000F0A02"  # air-conditioner
+  - "\U000F0393"  # thermostat
+  - "\U000F0717"  # snowflake
+  - "\U000F0238"  # fire
+  - "\U000F046A"  # radiator
+  - "\U000F040A"  # play
+  - "\U000F03E4"  # pause
+  - "\U000F04DB"  # stop
+  - "\U000F04C3"  # speaker
+  - "\U000F0502"  # television
+  - "\U000F075A"  # music
+  - "\U000F057E"  # volume-high
+  - "\U000F057F"  # volume-low
+  - "\U000F0581"  # volume-off
+  - "\U000F0118"  # cast
+  - "\U000F081A"  # door
+  - "\U000F081B"  # door-open
+  - "\U000F081C"  # door-closed
+  - "\U000F06D9"  # garage
+  - "\U000F06DA"  # garage-open
+  - "\U000F05AE"  # window-closed
+  - "\U000F05AF"  # window-open
+  - "\U000F0A47"  # blinds
+  - "\U000F1846"  # curtains
+  - "\U000F033E"  # lock
+  - "\U000F033F"  # lock-open
+  - "\U000F0498"  # shield
+  - "\U000F0565"  # shield-check
+  - "\U000F0787"  # alarm-light
+  - "\U000F07AE"  # cctv
+  - "\U000F0869"  # doorbell
+  - "\U000F0D91"  # motion-sensor
+  - "\U000F0E5B"  # printer-3d
+  - "\U000F0379"  # monitor
+  - "\U000F04F8"  # tablet
+  - "\U000F011C"  # cellphone
+  - "\U000F0469"  # router-wireless
+  - "\U000F048B"  # server
+  - "\U000F02DC"  # home
+  - "\U000F06A1"  # home-outline
+  - "\U000F07D0"  # home-assistant
+  - "\U000F04C9"  # sofa
+  - "\U000F0F53"  # bed
+  - "\U000F09A0"  # shower
+  - "\U000F09AB"  # toilet
+  - "\U000F102E"  # stove
+  - "\U000F0290"  # fridge
+  - "\U000F072E"  # washing-machine
+  - "\U000F0599"  # weather-sunny
+  - "\U000F0594"  # weather-night
+  - "\U000F0590"  # weather-cloudy
+  - "\U000F0597"  # weather-rainy
+  - "\U000F0F36"  # weather-snowy
+  - "\U000F0552"  # umbrella
+  - "\U000F0141"  # chevron-left
+  - "\U000F0142"  # chevron-right
+  - "\U000F0143"  # chevron-up
+  - "\U000F0140"  # chevron-down
+  - "\U000F035C"  # menu
+  - "\U000F01D9"  # dots-vertical
+  - "\U000F01D8"  # dots-horizontal
+  - "\U000F0415"  # plus
+  - "\U000F0374"  # minus
+  - "\U000F0156"  # close
+  - "\U000F012C"  # check
+  - "\U000F0493"  # cog
+  - "\U000F05E0"  # check-circle
+  - "\U000F0159"  # close-circle
+  - "\U000F0026"  # alert
+  - "\U000F0028"  # alert-circle
+  - "\U000F02FC"  # information
+  - "\U000F05A9"  # wifi
+  - "\U000F091F"  # wifi-strength-1
+  - "\U000F0922"  # wifi-strength-2
+  - "\U000F0925"  # wifi-strength-3
+  - "\U000F0928"  # wifi-strength-4
+  - "\U000F0079"  # battery
+  - "\U000F0084"  # battery-charging
+  - "\U000F010B"  # car
+  - "\U000F12D4"  # garage-variant
+  - "\U000F0B6B"  # car-door
+  - "\U000F0C5C"  # car-light-high
+  - "\U000F1009"  # sprinkler
+  - "\U000F0D98"  # water-pump
+  - "\U000F0531"  # tree
+  - "\U000F09D0"  # flower
+  - "\U000F1510"  # grass
+  - "\U000F0504"  # check-network
+  - "\U000F092F"  # wifi-strength-4
+  - "\U000F092B"  # wifi-strength-off
+  - "\U000F0920"  # wifi-strength-2
+  - "\U000F1A82"  # dots-grid
