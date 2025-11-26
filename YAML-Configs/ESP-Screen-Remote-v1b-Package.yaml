@@ -96,13 +96,6 @@ sensor:
     pin: GPIO34
     id: light_sensor
     update_interval: 60s
-  - platform: homeassistant
-    id: waze_time
-    entity_id: sensor.waze_travel_duration_rounded
-    internal: true
-    on_value:
-      then:
-        - component.update: my_display
 #    on_value_range:
 #      - below: 0.1
 #        then:
@@ -489,16 +482,6 @@ display:
             
             // Display temp/humidity (top right)
             it.printf(it.get_width() - 5, bar_height/2, id(climate), black, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
-
-            // Waze travel time (center top)
-            float waze_val = id(waze_time).state;
-            
-            if (!isnan(waze_val)) {
-              auto yellow = Color(0, 240, 255);
-            
-              // Icon + value
-              it.printf(it.get_width() / 2, bar_height / 2, id(climate), darkred, TextAlign::CENTER, "%.0f Mins", waze_val);
-            }
 
             int b_pos_y = 170;
 
