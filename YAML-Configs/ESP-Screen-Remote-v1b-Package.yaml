@@ -1,3 +1,18 @@
+# [ ==== Global Variables for Active Sensor Values ==== ] #
+globals:
+  - id: active_temperature
+    type: float
+    restore_value: no
+    initial_value: '0.0'
+  - id: active_humidity
+    type: float
+    restore_value: no
+    initial_value: '0.0'
+  - id: using_backup_sensors
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
 font: 
   # gfonts://family[@weight]
   - file: "gfonts://Roboto@500"
@@ -44,7 +59,7 @@ font:
     size: 16
     bpp: 4
     glyphs:
-      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '/', '0',
+      ['&', '@', '!', ',', '.', '?', '"', '%', '(', ')', '+', '-', '_', ':', '°', '/', '*', '0',
        '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
        'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
        'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
@@ -70,65 +85,88 @@ color:
     hex: "111111"
 
 sensor:
-#  - platform: wifi_signal
-#    name: "WiFi Signal"
-#    update_interval: 60s
-  - platform: uptime
-    name: "Uptime"
-    id: uptime_s
-    update_interval: 45s
+  # Power save mode monitor
+  - platform: homeassistant
+    id: weatherflow_power_save
+    entity_id: sensor.ftw_alliance_sensors_power_save_mode
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            // Check if we need to switch sensor sources
+            if (x == 3) {
+              id(using_backup_sensors) = true;
+              ESP_LOGI("sensor_switch", "Switching to ThermoPro sensors (Power Save Mode = 3)");
+            } else {
+              id(using_backup_sensors) = false;
+              ESP_LOGI("sensor_switch", "Using WeatherFlow sensors (Power Save Mode = %.0f)", x);
+            }
+        - component.update: my_display
+
+  # WeatherFlow Tempest sensors
   - platform: homeassistant
     id: weatherflow_temp
     entity_id: sensor.ftw_alliance_sensors_temperature
     internal: true
     on_value:
       then:
+        - lambda: |-
+            // Only update if not in backup mode
+            if (!id(using_backup_sensors)) {
+              id(active_temperature) = x;
+            }
         - component.update: my_display
+
   - platform: homeassistant
     id: weatherflow_humidity
     entity_id: sensor.ftw_alliance_sensors_humidity
     internal: true
     on_value:
       then:
+        - lambda: |-
+            // Only update if not in backup mode
+            if (!id(using_backup_sensors)) {
+              id(active_humidity) = x;
+            }
         - component.update: my_display
+
+  # ThermoPro backup sensors
+  - platform: homeassistant
+    id: thermopro_temp
+    entity_id: sensor.thermopro_hygrometer_temperature
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            // Only update if in backup mode
+            if (id(using_backup_sensors)) {
+              id(active_temperature) = x;
+            }
+        - component.update: my_display
+
+  - platform: homeassistant
+    id: thermopro_humidity
+    entity_id: sensor.thermopro_hygrometer_humidity
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            // Only update if in backup mode
+            if (id(using_backup_sensors)) {
+              id(active_humidity) = x;
+            }
+        - component.update: my_display
+
+  # Device monitoring sensors
+  - platform: uptime
+    name: "Uptime"
+    id: uptime_s
+    update_interval: 45s
   - platform: adc
     name: "Light Sensor"
     pin: GPIO34
     id: light_sensor
     update_interval: 60s
-#    on_value_range:
-#      - below: 0.1
-#        then:
-#          - light.control:
-#              id: back_light
-#              state: on
-#              brightness: 100%
-#      - above: 0.1
-#        below: 0.28
-#        then:
-#          - light.control:
-#              id: back_light
-#              state: on
-#              brightness: 50%
-#      - above: 0.28
-#        then:
-#          - light.control:
-#              id: back_light
-#              state: on
-#              brightness: 20%
-#  - platform: internal_temperature
-#    name: "CPU Temperature"
-#    update_interval: 30s
-# [ Input Voltage Monitoring Config via Light Sensor ] #
-# Cannot use in conjunction with Light Sensor Monitoring
-#  - platform: adc
-#    pin: GPIO34
-#    name: "Input Voltage"
-#    id: esp_voltage
-#    update_interval: 10s
-#    attenuation: 11db
-#    filters:
-#      - multiply: 32
 
 binary_sensor:
   - platform: status
@@ -137,47 +175,6 @@ binary_sensor:
   - platform: status
     id: wifi_connected
     name: "Wifi Status"
-#  - platform: gpio
-#    pin:
-#      number: GPIO27
-#      mode: INPUT_PULLDOWN
-#    name: "Motion Sensor"
-#    device_class: motion
-#    filters:
-#      - delayed_on: 100ms
-#      - delayed_off: 15s
-#    on_press:
-#      then:
-#        - light.turn_on:
-#            id: back_light
-#            brightness: 80%
-#        - light.turn_on:
-#            id: led
-#            red: 100%
-#            green: 100%
-#            blue: 100%
-#            brightness: 100%
-#    on_release:
-#      then:
-#        - light.turn_off: back_light
-#        - light.turn_on:
-#            id: led
-#            red: 100%
-#            green: 100%
-#            blue: 100%
-#            brightness: 60%
-#  - platform: gpio
-#    pin:
-#      number: GPIO0  # ESP32 Boot Button
-#      ignore_strapping_warning: true
-#      inverted: true
-#      mode:
-#        input: true
-#        pullup: true
-#    name: "Boot Button"
-#    on_press:
-#      then:
-#        - light.toggle: back_light
   - platform: touchscreen
     name: Button 1
     x_min: 53
@@ -191,7 +188,6 @@ binary_sensor:
             data:
               button: "1"
               device: "esphome-web-e5cd38"
-#        - rtttl.play: 'success:d=16,o=6,b=180:c,e,g'
   - platform: touchscreen
     name: Button 2
     x_min: 53
@@ -231,7 +227,6 @@ binary_sensor:
             data:
               button: "4"
               device: "esphome-web-e5cd38"
-#        - rtttl.play: 'notify:d=16,o=6,b=200:c,e,g,e,c'
 
 text_sensor:
   - platform: template
@@ -261,10 +256,6 @@ text_sensor:
   - platform: wifi_info
     ip_address:
       name: "IP Address"
-#    ssid:
-#      name: "WiFi SSID"
-#    bssid:
-#      name: "WiFi BSSID"
   - platform: version
     name: "ESPHome Version"
   - platform: homeassistant
@@ -331,16 +322,6 @@ output:
     id: output_blue
     pin: GPIO17
     inverted: true
-# [ PWM + RTTTL Audio Output on GPIO26/JST Connector ] #
-#  - platform: ledc
-#    pin: GPIO26
-#    id: rtttl_out
-#    frequency: 500Hz  # Default 1000Hz - Spkr Default 0-20KHz 
-
-#rtttl:
-#  output: rtttl_out
-#  id: my_rtttl
-#  gain: 20%  # Volume Adjustment (20% - 100%)
 
 light:
   - platform: monochromatic
@@ -363,14 +344,6 @@ touchscreen:
   interrupt_pin: 36
   update_interval: 50ms
   threshold: 400
-#  on_touch:
-#    - lambda: |-
-#          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
-#              touch.x,
-#              touch.y,
-#              touch.x_raw,
-#              touch.y_raw
-#              );
   calibration:
     x_min: 280
     x_max: 3860
@@ -398,7 +371,6 @@ display:
     dimensions:
       height: 240
       width: 320
-#    reset_pin: 16
     update_interval: 180s  # Update every 3 minutes
 
     pages:      
@@ -476,9 +448,9 @@ display:
             // Display weather condition (top left)
             it.printf(5, bar_height/2, id(climate), black, TextAlign::CENTER_LEFT, "%s", formatted_weather.c_str());
             
-            // Format temperature and humidity
-            int temp = (int)round(id(weatherflow_temp).state);
-            int humidity = (int)round(id(weatherflow_humidity).state);
+            // Format temperature and humidity using active sensor values
+            int temp = (int)round(id(active_temperature));
+            int humidity = (int)round(id(active_humidity));
             
             // Display temp/humidity (top right)
             it.printf(it.get_width() - 5, bar_height/2, id(climate), black, TextAlign::CENTER_RIGHT, "%d°F / %d%%", temp, humidity);
